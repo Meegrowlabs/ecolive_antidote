@@ -1,0 +1,371 @@
+/*
+Theme Name: Ecolive Organic Precision
+Theme URI: https://ecolive.in
+Author: Ecolive Ventures Pvt. Ltd.
+Author URI: https://ecolive.in
+Description: Editorial blog theme for Ecolive built against the Organic Precision design system. Bridges high-end editorial print and modern digital interfaces — Manrope typography, deep-forest palette, no-line surface hierarchy, glass headers, and rounded data visualizations. Designed for long-form ESG, water, and sustainability writing.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ecolive-organic
+Tags: blog, editorial, sustainability, one-column, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-styles, wide-blocks
+*/
+
+/* =========================================================
+   ECOLIVE — ORGANIC PRECISION
+   The Living Document — bridging editorial print and digital UI.
+   ========================================================= */
+
+:root {
+  /* Tonal Ecosystem */
+  --primary: #00261b;
+  --on-primary: #ffffff;
+  --primary-container: #0b3d2e;
+  --on-primary-container: #ffffff;
+  --primary-fixed: #97fa85;
+  --on-primary-fixed: #00261b;
+  --primary-fixed-dim: #7be770;
+
+  --secondary: #006e09;
+  --on-secondary: #ffffff;
+  --secondary-container: #97fa85;
+  --on-secondary-container: #00261b;
+  --secondary-fixed: #97fa85;
+  --secondary-fixed-dim: #7be770;
+
+  --tertiary: #286655;
+  --tertiary-container: #c2e8ff;
+  --on-tertiary-container: #001f2a;
+  --tertiary-fixed: #c2e8ff;
+
+  --surface: #f7faf8;
+  --surface-bright: #f7faf8;
+  --surface-dim: #dadddb;
+  --surface-variant: #e0e3e1;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f1f4f2;
+  --surface-container: #ebeeec;
+  --surface-container-high: #e6e9e7;
+  --surface-container-highest: #e0e3e1;
+
+  --on-surface: #181c1b;
+  --on-surface-variant: #3f4844;
+  --outline: #6f7975;
+  --outline-variant: #c0c8c3;
+
+  --shadow-color: 24, 28, 27;
+
+  --max-w: 1280px;
+  --max-w-prose: 720px;
+  --radius-sm: 0.5rem;
+  --radius: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+}
+
+/* ---------- Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--on-surface);
+  background: var(--surface);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- Editorial Authority — typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--on-surface);
+  margin: 0;
+}
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+h3 { font-size: 1.625rem; line-height: 1.25; }
+h4 { font-size: 1.25rem; }
+p { margin: 0; }
+
+/* ---------- Layout helpers ---------- */
+.eco-container { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; }
+.eco-prose { max-width: var(--max-w-prose); margin-inline: auto; }
+.eco-stack > * + * { margin-top: 1.5rem; }
+.eco-stack-lg > * + * { margin-top: 3rem; }
+
+/* ---------- Buttons ---------- */
+.eco-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+  color: var(--on-primary);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border: 0;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.eco-btn-primary:hover { box-shadow: 0 15px 40px rgba(var(--shadow-color), 0.18); }
+.eco-btn-primary:active { transform: scale(0.97); }
+
+.eco-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid rgba(192, 200, 195, 0.4);
+  color: var(--on-surface);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.eco-btn-secondary:hover { background: var(--surface-container-low); }
+
+.eco-btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 0;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+/* ---------- Site header (glass) ---------- */
+.eco-site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: rgba(247, 250, 248, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(var(--shadow-color), 0.04);
+}
+.eco-site-header__inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.eco-site-logo { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 800; letter-spacing: -0.02em; color: var(--primary); font-size: 1.25rem; }
+.eco-site-logo img { height: 2rem; width: auto; }
+.eco-nav { display: none; align-items: center; gap: 2rem; }
+@media (min-width: 900px) { .eco-nav { display: flex; } }
+.eco-nav a { font-size: 0.875rem; font-weight: 600; color: var(--on-surface-variant); transition: color 0.2s ease; }
+.eco-nav a:hover, .eco-nav a.is-active { color: var(--primary); }
+.eco-nav a.is-active { border-bottom: 2px solid var(--secondary); padding-bottom: 0.25rem; }
+
+.eco-mobile-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 9999px;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+}
+@media (min-width: 900px) { .eco-mobile-toggle { display: none; } }
+.eco-mobile-menu { display: none; padding: 1.5rem; background: rgba(247, 250, 248, 0.95); backdrop-filter: blur(20px); }
+.eco-mobile-menu.is-open { display: block; }
+.eco-mobile-menu a { display: block; padding: 0.5rem 0; font-weight: 600; color: var(--on-surface-variant); }
+
+/* ---------- Reading progress bar ---------- */
+.eco-progress { position: fixed; top: 5rem; left: 0; right: 0; height: 3px; background: var(--surface-container-low); z-index: 40; }
+.eco-progress__bar { height: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-container)); width: 0; transition: width 0.15s ease; }
+
+/* ---------- Editorial hero ---------- */
+.eco-blog-hero { padding: 10rem 1.5rem 6rem; position: relative; overflow: hidden; }
+.eco-blog-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(circle at top right, rgba(151, 250, 133, 0.3), transparent 60%), var(--surface);
+}
+.eco-blog-hero__inner { max-width: var(--max-w); margin-inline: auto; display: grid; gap: 4rem; grid-template-columns: 1fr; align-items: end; }
+@media (min-width: 1024px) { .eco-blog-hero__inner { grid-template-columns: 2fr 1fr; } }
+.eco-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(151, 250, 133, 0.4);
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.eco-text-gradient { background: linear-gradient(135deg, var(--primary), var(--primary-container)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* ---------- Article cards ---------- */
+.eco-grid { display: grid; gap: 2.5rem; max-width: var(--max-w); margin-inline: auto; padding: 0 1.5rem 6rem; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .eco-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .eco-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.eco-card { background: transparent; }
+.eco-card__media { aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--surface-container-low); margin-bottom: 1.5rem; }
+.eco-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.eco-card:hover .eco-card__media img { transform: scale(1.05); }
+.eco-card__meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.eco-card__meta span { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; color: var(--outline); }
+.eco-card__meta .eco-cat { color: var(--secondary); }
+.eco-card__title { font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.75rem; transition: color 0.2s ease; }
+.eco-card:hover .eco-card__title { color: var(--primary); }
+.eco-card__excerpt { color: var(--on-surface-variant); margin-bottom: 1.5rem; }
+.eco-card__byline { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--on-surface-variant); }
+.eco-card__byline strong { color: var(--on-surface); font-weight: 700; }
+.eco-avatar { width: 2rem; height: 2rem; border-radius: 9999px; overflow: hidden; background: var(--surface-variant); }
+.eco-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Featured (sticky) post ---------- */
+.eco-featured { max-width: var(--max-w); margin: 0 auto 6rem; padding-inline: 1.5rem; }
+.eco-featured__card { display: grid; grid-template-columns: 1fr; background: var(--surface-container-lowest); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.5s ease; }
+.eco-featured__card:hover { box-shadow: 0 30px 60px rgba(var(--shadow-color), 0.06); }
+@media (min-width: 1024px) { .eco-featured__card { grid-template-columns: 7fr 5fr; } }
+.eco-featured__media { aspect-ratio: 16 / 10; overflow: hidden; }
+.eco-featured__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.eco-featured__card:hover .eco-featured__media img { transform: scale(1.04); }
+.eco-featured__body { padding: clamp(2rem, 4vw, 3.5rem); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
+
+/* ---------- Topic pills ---------- */
+.eco-topics { max-width: var(--max-w); margin-inline: auto; padding: 0 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+.eco-pill { padding: 0.625rem 1.25rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; color: var(--on-surface-variant); background: var(--surface-container-lowest); border: 1px solid rgba(192, 200, 195, 0.2); transition: background 0.2s ease; }
+.eco-pill:hover { background: var(--surface-container-low); }
+.eco-pill.is-active { background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: var(--on-primary); border-color: transparent; font-weight: 700; }
+
+/* ---------- Pagination ---------- */
+.eco-pagination { display: flex; justify-content: center; align-items: center; gap: 0.75rem; padding: 3rem 1.5rem; max-width: var(--max-w); margin-inline: auto; }
+.eco-pagination .page-numbers, .eco-pagination .nav-links a, .eco-pagination .nav-links span {
+  width: 3rem; height: 3rem;
+  border-radius: 9999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(192, 200, 195, 0.2);
+  color: var(--on-surface-variant);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.eco-pagination .page-numbers.current { background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: var(--on-primary); border-color: transparent; }
+.eco-pagination .page-numbers:hover { background: var(--surface-container-low); }
+
+/* ---------- Single post ---------- */
+.eco-single__header { padding: 8rem 1.5rem 4rem; }
+.eco-single__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--on-surface-variant); margin-bottom: 2.5rem; }
+.eco-single__back:hover { color: var(--primary); }
+.eco-single__title { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin-bottom: 2rem; }
+.eco-single__lede { font-size: 1.375rem; color: var(--on-surface-variant); line-height: 1.6; margin-bottom: 3rem; }
+.eco-single__byline { display: flex; align-items: center; gap: 1rem; }
+.eco-single__byline .eco-avatar { width: 3.5rem; height: 3.5rem; }
+.eco-single__hero { padding: 0 1.5rem 5rem; }
+.eco-single__hero-img { aspect-ratio: 21 / 9; border-radius: var(--radius); overflow: hidden; max-width: 1100px; margin-inline: auto; }
+.eco-single__hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.eco-single__caption { text-align: center; font-size: 0.875rem; color: var(--outline); margin-top: 1rem; max-width: var(--max-w-prose); margin-inline: auto; }
+
+/* ---------- Article body (the editorial canvas) ---------- */
+.eco-article-body { max-width: var(--max-w-prose); margin-inline: auto; padding: 0 1.5rem 6rem; font-size: 1.125rem; line-height: 1.8; color: var(--on-surface); }
+.eco-article-body > * + * { margin-top: 1.5rem; }
+.eco-article-body p { color: var(--on-surface-variant); }
+.eco-article-body h2 { font-size: 2.25rem; margin-top: 4rem; margin-bottom: 1.5rem; }
+.eco-article-body h3 { font-size: 1.625rem; margin-top: 3rem; margin-bottom: 1rem; }
+.eco-article-body strong { color: var(--on-surface); font-weight: 700; }
+.eco-article-body a { color: var(--secondary); text-decoration: underline; text-decoration-color: rgba(0, 110, 9, 0.3); text-underline-offset: 4px; }
+.eco-article-body a:hover { text-decoration-color: var(--secondary); }
+.eco-article-body blockquote, .eco-article-body .wp-block-quote {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--primary);
+  padding: 2rem 2.5rem;
+  background: var(--surface-container-low);
+  border-radius: var(--radius);
+  font-style: italic;
+  border: 0;
+  margin: 0;
+}
+.eco-article-body ul, .eco-article-body ol { padding-left: 1.5rem; color: var(--on-surface-variant); }
+.eco-article-body ul li { list-style: disc; margin-bottom: 0.5rem; }
+.eco-article-body ol li { list-style: decimal; margin-bottom: 0.5rem; }
+.eco-article-body img, .eco-article-body figure, .eco-article-body .wp-block-image img { border-radius: var(--radius); overflow: hidden; }
+.eco-article-body figcaption { text-align: center; font-size: 0.875rem; color: var(--outline); margin-top: 0.75rem; }
+.eco-article-body code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--surface-container-low); padding: 0.15rem 0.4rem; border-radius: 0.4rem; font-size: 0.95em; }
+.eco-article-body pre, .eco-article-body .wp-block-code { background: var(--primary); color: var(--secondary-fixed); padding: 1.5rem; border-radius: var(--radius); overflow-x: auto; }
+.eco-article-body pre code { background: transparent; color: inherit; padding: 0; }
+.eco-article-body hr, .eco-article-body .wp-block-separator { border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--outline-variant), transparent); margin: 3rem 0; }
+.eco-article-body .has-drop-cap::first-letter { font-size: 4.5rem; font-weight: 800; float: left; line-height: 0.85; padding: 0.4rem 0.75rem 0 0; color: var(--primary); }
+
+/* Wide / full-bleed Gutenberg blocks */
+.eco-article-body .alignwide { max-width: 1000px; margin-inline: auto; }
+.eco-article-body .alignfull { max-width: none; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+
+/* ---------- Author card ---------- */
+.eco-author-card { max-width: var(--max-w-prose); margin: 0 auto 6rem; padding: 0 1.5rem; }
+.eco-author-card__inner { background: var(--surface-container-lowest); padding: 2.5rem; border-radius: var(--radius); display: flex; flex-direction: column; gap: 1.5rem; }
+@media (min-width: 768px) { .eco-author-card__inner { flex-direction: row; align-items: flex-start; } }
+.eco-author-card__avatar { width: 5rem; height: 5rem; border-radius: 9999px; overflow: hidden; background: var(--surface-variant); flex-shrink: 0; }
+
+/* ---------- Comments ---------- */
+.eco-comments { max-width: var(--max-w-prose); margin: 0 auto 6rem; padding: 0 1.5rem; }
+.eco-comments h2 { font-size: 1.75rem; margin-bottom: 2rem; }
+.eco-comments .comment-list { list-style: none; padding: 0; margin: 0; }
+.eco-comments .comment-list li { padding: 1.5rem; background: var(--surface-container-lowest); border-radius: var(--radius); margin-bottom: 1.25rem; }
+.eco-comments input[type="text"], .eco-comments input[type="email"], .eco-comments input[type="url"], .eco-comments textarea {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-low);
+  border: 1px solid rgba(192, 200, 195, 0.2);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--on-surface);
+  transition: border-color 0.2s ease;
+}
+.eco-comments input:focus, .eco-comments textarea:focus { outline: none; border-color: var(--secondary); }
+.eco-comments .submit { background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: var(--on-primary); border: 0; padding: 0.875rem 2rem; border-radius: 9999px; font-weight: 700; }
+
+/* ---------- Footer ---------- */
+.eco-site-footer { background: var(--primary); color: var(--on-primary); border-radius: 3rem 3rem 0 0; margin-top: 5rem; }
+.eco-site-footer__grid { max-width: var(--max-w); margin-inline: auto; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr; gap: 3rem; }
+@media (min-width: 768px) { .eco-site-footer__grid { grid-template-columns: repeat(4, 1fr); } }
+.eco-site-footer h4 { color: var(--secondary-fixed); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.eco-site-footer a { color: rgba(151, 250, 133, 0.7); transition: color 0.2s ease; }
+.eco-site-footer a:hover { color: var(--secondary-fixed); text-decoration: underline; text-decoration-color: rgba(151, 250, 133, 0.4); text-underline-offset: 4px; }
+.eco-site-footer__bottom { max-width: var(--max-w); margin-inline: auto; padding: 2rem; background: rgba(11, 61, 46, 0.5); border-radius: 1.5rem 1.5rem 0 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: rgba(151, 250, 133, 0.7); }
+
+/* ---------- Newsletter CTA banner ---------- */
+.eco-newsletter { max-width: var(--max-w); margin: 0 auto 6rem; padding: 0 1.5rem; }
+.eco-newsletter__inner { background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: var(--on-primary); border-radius: var(--radius); padding: clamp(2.5rem, 5vw, 5rem); position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+@media (min-width: 1024px) { .eco-newsletter__inner { grid-template-columns: 1fr 1fr; } }
+.eco-newsletter__form { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (min-width: 640px) { .eco-newsletter__form { flex-direction: row; } }
+.eco-newsletter__form input { flex: 1; padding: 1rem 1.5rem; border-radius: 9999px; background: var(--primary-container); border: 0; color: var(--on-primary); }
+.eco-newsletter__form input::placeholder { color: rgba(151, 250, 133, 0.5); }
+.eco-newsletter__form button { padding: 1rem 2rem; border-radius: 9999px; background: var(--secondary-fixed); color: var(--on-secondary-fixed); border: 0; font-weight: 700; }
+
+/* ---------- Misc utilities ---------- */
+.eco-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* WordPress core alignments */
+.alignleft { float: left; margin: 0.5rem 1.5rem 0.5rem 0; }
+.alignright { float: right; margin: 0.5rem 0 0.5rem 1.5rem; }
+.aligncenter { display: block; margin-inline: auto; }
+.gallery-caption { display: block; }
+.bypostauthor { display: block; }
+.sticky { display: block; }

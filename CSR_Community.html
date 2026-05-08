@@ -15,53 +15,53 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary-fixed": "#b2ebff",
-                        "secondary": "#00696c",
-                        "inverse-primary": "#8bd1e8",
-                        "on-error-container": "#93000a",
-                        "on-primary-fixed": "#001f27",
-                        "on-secondary-fixed": "#002021",
-                        "surface-variant": "#dee3e5",
-                        "tertiary-container": "#437f6d",
-                        "secondary-container": "#86f0f3",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed-variant": "#004e5f",
-                        "on-tertiary-fixed-variant": "#0b5040",
-                        "surface": "#f5fafc",
-                        "on-primary-container": "#fafdff",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-bright": "#f5fafc",
-                        "tertiary": "#286655",
-                        "outline": "#717786",
-                        "error-container": "#ffdad6",
-                        "inverse-on-surface": "#ecf2f4",
-                        "on-error": "#ffffff",
-                        "background": "#f5fafc",
-                        "secondary-fixed": "#89f3f6",
-                        "on-surface": "#171c1e",
-                        "error": "#ba1a1a",
-                        "primary-container": "#347d92",
-                        "secondary-fixed-dim": "#6bd7da",
-                        "outline-variant": "#c1c6d7",
-                        "surface-dim": "#d6dbdd",
-                        "on-secondary-fixed-variant": "#004f51",
-                        "surface-container-highest": "#dee3e5",
-                        "on-background": "#171c1e",
-                        "surface-container": "#eaeff1",
-                        "on-tertiary-container": "#f5fff9",
-                        "primary": "#0e6479",
+                        "primary": "#00261b",
                         "on-primary": "#ffffff",
-                        "on-surface-variant": "#414754",
-                        "surface-tint": "#13677b",
-                        "on-secondary-container": "#006e70",
-                        "surface-container-high": "#e4e9eb",
+                        "primary-container": "#0b3d2e",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed": "#97fa85",
+                        "on-primary-fixed": "#00261b",
+                        "primary-fixed-dim": "#7be770",
+                        "on-primary-fixed-variant": "#0b3d2e",
+                        "secondary": "#006e09",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#97fa85",
+                        "on-secondary-container": "#00261b",
+                        "secondary-fixed": "#97fa85",
+                        "on-secondary-fixed": "#00261b",
+                        "secondary-fixed-dim": "#7be770",
+                        "on-secondary-fixed-variant": "#003d04",
+                        "tertiary": "#286655",
                         "on-tertiary": "#ffffff",
-                        "tertiary-fixed-dim": "#95d3be",
-                        "inverse-surface": "#2c3133",
-                        "tertiary-fixed": "#b0efda",
-                        "surface-container-low": "#eff4f6",
-                        "primary-fixed-dim": "#8bd1e8",
-                        "on-tertiary-fixed": "#002018"
+                        "tertiary-container": "#c2e8ff",
+                        "on-tertiary-container": "#001f2a",
+                        "tertiary-fixed": "#c2e8ff",
+                        "on-tertiary-fixed": "#001f2a",
+                        "tertiary-fixed-dim": "#a4d8ff",
+                        "on-tertiary-fixed-variant": "#0b3d2e",
+                        "surface": "#f7faf8",
+                        "surface-bright": "#f7faf8",
+                        "surface-dim": "#dadddb",
+                        "surface-variant": "#e0e3e1",
+                        "surface-tint": "#00261b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f1f4f2",
+                        "surface-container": "#ebeeec",
+                        "surface-container-high": "#e6e9e7",
+                        "surface-container-highest": "#e0e3e1",
+                        "on-surface": "#181c1b",
+                        "on-surface-variant": "#3f4844",
+                        "background": "#f7faf8",
+                        "on-background": "#181c1b",
+                        "inverse-surface": "#2d322f",
+                        "inverse-on-surface": "#eef1ef",
+                        "inverse-primary": "#97fa85",
+                        "outline": "#6f7975",
+                        "outline-variant": "#c0c8c3",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#410002"
                     },
                     fontFamily: {
                         "headline": ["Manrope", "sans-serif"],
@@ -78,46 +78,59 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .water-gradient {
-            background: linear-gradient(135deg, #f5fafc 0%, #e0f2f7 100%);
+            background: linear-gradient(135deg, #f7faf8 0%, #e0e3e1 100%);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(247, 250, 248, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
         .asymmetric-shape {
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #00261b 0%, #0b3d2e 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #00261b 0%, #0b3d2e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ghost-border {
+            border: 1px solid rgba(192, 200, 195, 0.2);
         }
     </style>
 </head>
 <body class="bg-surface font-body text-on-surface">
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-[0_10px_30px_rgba(14,100,121,0.08)] h-20">
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(24,28,27,0.04)] h-20">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-full">
 <a href="index.html"><img src="logo.svg" alt="Ecolive" class="h-8"></a>
 <div class="hidden md:flex items-center gap-10 font-manrope text-sm font-semibold tracking-tight">
-<a class="text-slate-600 hover:text-cyan-700 transition-colors" href="index.html">Home</a>
-<a class="text-slate-600 hover:text-cyan-700 transition-colors" href="Water_ESG.html">Programs</a>
-<a class="text-cyan-600 border-b-2 border-cyan-600 pb-1" href="CSR_Community.html">ESG Impact</a>
-<a class="text-slate-600 hover:text-cyan-700 transition-colors" href="index.html#about-section">About Us</a>
-<a class="text-slate-600 hover:text-cyan-700 transition-colors" href="index.html#contact-section">Contact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="Water_ESG.html">Programs</a>
+<a class="text-primary border-b-2 border-secondary pb-1" href="CSR_Community.html">ESG Impact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Insights</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#about-section">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#contact-section">Contact</a>
 </div>
 <button id="mobile-menu-btn" class="md:hidden p-2 text-primary">
 <span class="material-symbols-outlined text-3xl">menu</span>
 </button>
-<a href="index.html#contact-section" class="hidden md:inline-block bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all duration-200">
+<a href="index.html#contact-section" class="hidden md:inline-block btn-primary-gradient text-on-primary px-8 py-3 rounded-full font-bold hover:scale-105 active:scale-95 transition-all duration-200">
                 Get Started
             </a>
 </div>
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-slate-200">
+<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-surface/95 backdrop-blur-xl shadow-xl">
 <div class="flex flex-col px-8 py-6 gap-4 font-manrope text-sm font-semibold">
-<a class="text-slate-600 hover:text-cyan-700 py-2" href="index.html">Home</a>
-<a class="text-slate-600 hover:text-cyan-700 py-2" href="Water_ESG.html">Programs</a>
-<a class="text-cyan-600 py-2" href="CSR_Community.html">ESG Impact</a>
-<a class="text-slate-600 hover:text-cyan-700 py-2" href="index.html#about-section">About Us</a>
-<a class="text-slate-600 hover:text-cyan-700 py-2" href="index.html#contact-section">Contact</a>
-<a href="index.html#contact-section" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold text-center mt-2">Get Started</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="Water_ESG.html">Programs</a>
+<a class="text-primary py-2" href="CSR_Community.html">ESG Impact</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="blog.html">Insights</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="index.html#about-section">About Us</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="index.html#contact-section">Contact</a>
+<a href="index.html#contact-section" class="btn-primary-gradient text-on-primary px-6 py-3 rounded-full font-bold text-center mt-2">Get Started</a>
 </div>
 </div>
 </nav>
@@ -135,11 +148,11 @@
                         Ecolive Ventures Pvt. Ltd. provides end-to-end CSR campaign planning and implementation across India — from beneficiary identification to project completion, handover, and measurable impact reporting.
                     </p>
 <div class="flex flex-wrap gap-4">
-<a href="#sustainability-section" class="bg-primary text-on-primary px-10 py-4 rounded-lg font-bold shadow-[0_10px_30px_rgba(14,100,121,0.15)] flex items-center gap-2 inline-flex">
+<a href="#sustainability-section" class="btn-primary-gradient text-on-primary px-10 py-4 rounded-full font-bold shadow-[0_15px_40px_rgba(24,28,27,0.18)] flex items-center gap-2 inline-flex">
                             View Impact Report
                             <span class="material-symbols-outlined">arrow_downward</span>
 </a>
-<a href="index.html#about-section" class="bg-surface-container-lowest text-primary px-10 py-4 rounded-lg font-bold border border-outline-variant/20 hover:bg-surface-container transition-colors inline-block">
+<a href="index.html#about-section" class="bg-surface-container-lowest text-primary px-10 py-4 rounded-full font-bold ghost-border hover:bg-surface-container-low transition-colors inline-block">
                             Our Mission
                         </a>
 </div>
@@ -149,7 +162,7 @@
 <img class="w-full h-full object-cover" data-alt="Clear blue water ripples with light reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq-HX4BesjCV_-Sz6xHSOuErBX_IHK2625hoo4kw1nwQ3iIhr5Z28KUv-22vFUmLteqcltJZ4NBWHQPP57AfAMLK88mLVH9hBNdZnojisZ6ie8c2Lju3mfXUQCJE7yAtDbNAlpxvivYPwH6_L_r73_HnRi1QhWc4H9k9yph181XpSPK6uHdcMLWmsY4Gd1Qa7F4kf0-FMmE_lBEWgZNbnY4p741L2XY5ZWSFUPjj7_rPmIcni04v1phZf37cK3lm_HH3ZLFKWrqIg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
 </div>
-<div class="absolute -bottom-8 -left-8 glass-card p-8 rounded-lg border border-white/30 shadow-xl max-w-xs">
+<div class="absolute -bottom-8 -left-8 glass-card p-8 rounded-lg shadow-[0_30px_60px_rgba(24,28,27,0.1)] max-w-xs">
 <div class="flex items-center gap-4 mb-2">
 <span class="material-symbols-outlined text-secondary text-4xl" data-icon="waves">waves</span>
 <div class="text-3xl font-black text-primary">652M+</div>
@@ -182,7 +195,7 @@
 </div>
 </div>
 <!-- Initiative 2 -->
-<div class="bg-primary text-on-primary p-10 rounded-xl flex flex-col justify-between">
+<div class="btn-primary-gradient text-on-primary p-10 rounded-xl flex flex-col justify-between">
 <div>
 <span class="material-symbols-outlined text-4xl mb-6" data-icon="forest">forest</span>
 <h3 class="text-2xl font-bold mb-4">Solar Energy for Communities</h3>
@@ -240,7 +253,7 @@
 </div>
 </li>
 </ul>
-<a href="Jaldoot/index.html" class="bg-secondary text-on-secondary px-10 py-5 rounded-lg font-bold hover:bg-primary transition-all flex items-center gap-3 inline-flex">
+<a href="Jaldoot/index.html" class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-bold hover:bg-primary transition-all flex items-center gap-3 inline-flex">
                         Visit Jaldoot
                         <span class="material-symbols-outlined">arrow_forward</span>
 </a>
@@ -249,43 +262,43 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full rounded-t-[3rem] mt-20 bg-slate-100">
+<footer class="w-full rounded-t-[3rem] mt-20 bg-primary text-on-primary">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
 <div class="col-span-1 md:col-span-1">
-<a href="index.html" class="mb-6 block"><img src="logo.svg" alt="Ecolive" class="h-7"></a>
-<p class="font-manrope text-sm leading-relaxed text-slate-500 mb-8">
+<a href="index.html" class="mb-6 block"><img src="logo.svg" alt="Ecolive" class="h-7 brightness-0 invert"></a>
+<p class="font-manrope text-sm leading-relaxed text-primary-fixed/80 mb-8">
                     Ecolive Ventures Pvt. Ltd. — Wellness of Nature &amp; Nature for Wellness. Reversing the damage we have inflicted on Earth.
                 </p>
 </div>
 <div>
-<h5 class="text-cyan-800 font-bold mb-6">Impact</h5>
+<h5 class="text-secondary-fixed font-bold mb-6">Impact</h5>
 <div class="flex flex-col gap-3 font-manrope text-sm">
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="Water_ESG.html">Wellness</a>
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="Water_ESG.html">Water</a>
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="Water_ESG.html">Waste</a>
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="Water_ESG.html">Energy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="Water_ESG.html">Wellness</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="Water_ESG.html">Water</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="Water_ESG.html">Waste</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="Water_ESG.html">Energy</a>
 </div>
 </div>
 <div>
-<h5 class="text-cyan-800 font-bold mb-6">Legal</h5>
+<h5 class="text-secondary-fixed font-bold mb-6">Legal</h5>
 <div class="flex flex-col gap-3 font-manrope text-sm">
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="#">Privacy Policy</a>
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="#">Terms of Service</a>
-<a class="text-slate-500 hover:text-cyan-600 hover:underline decoration-cyan-500/30 underline-offset-4 transition-all" href="#">Cookie Policy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="#">Privacy Policy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="#">Terms of Service</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed hover:underline decoration-secondary-fixed/40 underline-offset-4 transition-all" href="#">Cookie Policy</a>
 </div>
 </div>
 <div>
-<h5 class="text-cyan-800 font-bold mb-6">Newsletter</h5>
+<h5 class="text-secondary-fixed font-bold mb-6">Newsletter</h5>
 <div class="flex gap-2">
-<input class="bg-white px-4 py-2 rounded-lg text-sm w-full border-transparent focus:ring-1 focus:ring-cyan-500" placeholder="Your email" type="text"/>
-<button class="bg-cyan-800 text-white p-2 rounded-lg">
+<input class="bg-primary-container px-4 py-2 rounded-full text-sm w-full text-on-primary placeholder:text-primary-fixed/50 border-transparent focus:ring-1 focus:ring-secondary-fixed" placeholder="Your email" type="text"/>
+<button class="bg-secondary text-on-secondary p-2 rounded-full">
 <span class="material-symbols-outlined text-sm">send</span>
 </button>
 </div>
 </div>
 </div>
-<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200">
-<p class="font-manrope text-sm text-slate-400 text-center">© 2025 Ecolive Ventures Pvt. Ltd. All rights reserved.</p>
+<div class="max-w-7xl mx-auto px-8 py-8 bg-primary-container/50 rounded-t-3xl">
+<p class="font-manrope text-sm text-primary-fixed/70 text-center">© 2025 Ecolive Ventures Pvt. Ltd. All rights reserved.</p>
 </div>
 </footer>
 <script>

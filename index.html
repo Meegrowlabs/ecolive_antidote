@@ -15,51 +15,53 @@
         theme: {
           extend: {
             colors: {
-              "primary-fixed": "#b2ebff",
-              "secondary": "#00696c",
-              "inverse-primary": "#8bd1e8",
-              "on-error-container": "#93000a",
-              "on-primary-fixed": "#001f27",
-              "on-secondary-fixed": "#002021",
-              "surface-variant": "#dee3e5",
-              "tertiary-container": "#437f6d",
-              "secondary-container": "#86f0f3",
-              "on-secondary": "#ffffff",
-              "on-primary-fixed-variant": "#004e5f",
-              "on-tertiary-fixed-variant": "#0b5040",
-              "surface": "#f5fafc",
-              "on-primary-container": "#fafdff",
-              "surface-container-lowest": "#ffffff",
-              "surface-bright": "#f5fafc",
-              "tertiary": "#286655",
-              "outline": "#717786",
-              "error-container": "#ffdad6",
-              "inverse-on-surface": "#ecf2f4",
-              "on-error": "#ffffff",
-              "background": "#f5fafc",
-              "secondary-fixed": "#89f3f6",
-              "on-surface": "#171c1e",
-              "error": "#ba1a1a",
-              "primary-container": "#347d92",
-              "secondary-fixed-dim": "#6bd7da",
-              "outline-variant": "#c1c6d7",
-              "surface-container-highest": "#dee3e5",
-              "on-background": "#171c1e",
-              "surface-container": "#eaeff1",
-              "on-tertiary-container": "#f5fff9",
-              "primary": "#0e6479",
+              "primary": "#00261b",
               "on-primary": "#ffffff",
-              "on-surface-variant": "#414754",
-              "surface-tint": "#13677b",
-              "on-secondary-container": "#006e70",
-              "surface-container-high": "#e4e9eb",
+              "primary-container": "#0b3d2e",
+              "on-primary-container": "#ffffff",
+              "primary-fixed": "#97fa85",
+              "on-primary-fixed": "#00261b",
+              "primary-fixed-dim": "#7be770",
+              "on-primary-fixed-variant": "#0b3d2e",
+              "secondary": "#006e09",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#97fa85",
+              "on-secondary-container": "#00261b",
+              "secondary-fixed": "#97fa85",
+              "on-secondary-fixed": "#00261b",
+              "secondary-fixed-dim": "#7be770",
+              "on-secondary-fixed-variant": "#003d04",
+              "tertiary": "#286655",
               "on-tertiary": "#ffffff",
-              "tertiary-fixed-dim": "#95d3be",
-              "inverse-surface": "#2c3133",
-              "tertiary-fixed": "#b0efda",
-              "surface-container-low": "#eff4f6",
-              "primary-fixed-dim": "#8bd1e8",
-              "on-tertiary-fixed": "#002018"
+              "tertiary-container": "#c2e8ff",
+              "on-tertiary-container": "#001f2a",
+              "tertiary-fixed": "#c2e8ff",
+              "on-tertiary-fixed": "#001f2a",
+              "tertiary-fixed-dim": "#a4d8ff",
+              "on-tertiary-fixed-variant": "#0b3d2e",
+              "surface": "#f7faf8",
+              "surface-bright": "#f7faf8",
+              "surface-dim": "#dadddb",
+              "surface-variant": "#e0e3e1",
+              "surface-tint": "#00261b",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f1f4f2",
+              "surface-container": "#ebeeec",
+              "surface-container-high": "#e6e9e7",
+              "surface-container-highest": "#e0e3e1",
+              "on-surface": "#181c1b",
+              "on-surface-variant": "#3f4844",
+              "background": "#f7faf8",
+              "on-background": "#181c1b",
+              "inverse-surface": "#2d322f",
+              "inverse-on-surface": "#eef1ef",
+              "inverse-primary": "#97fa85",
+              "outline": "#6f7975",
+              "outline-variant": "#c0c8c3",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-error-container": "#410002"
             },
             fontFamily: {
               "headline": ["Manrope", "sans-serif"],
@@ -80,52 +82,60 @@
             -webkit-backdrop-filter: blur(20px);
         }
         .text-gradient {
-            background: linear-gradient(135deg, #0e6479 0%, #00696c 100%);
+            background: linear-gradient(135deg, #00261b 0%, #0b3d2e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #00261b 0%, #0b3d2e 100%);
+        }
+        .ghost-border {
+            border: 1px solid rgba(192, 200, 195, 0.2);
         }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body overflow-x-hidden">
 <!-- TopAppBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-[0_10px_30px_rgba(14,100,121,0.08)]">
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(24,28,27,0.04)]">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
 <a href="index.html"><img src="logo.svg" alt="Ecolive" class="h-8"></a>
 <div class="hidden md:flex gap-8 items-center font-manrope text-sm font-semibold tracking-tight">
-<a class="text-cyan-600 border-b-2 border-cyan-600 pb-1" href="index.html">Home</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors" href="Water_ESG.html">Programs</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors" href="CSR_Community.html">ESG Impact</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors" href="#about-section">About Us</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors" href="#contact-section">Contact</a>
+<a class="text-primary border-b-2 border-secondary pb-1" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="Water_ESG.html">Programs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="CSR_Community.html">ESG Impact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Insights</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#about-section">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-section">Contact</a>
 </div>
 <button id="mobile-menu-btn" class="md:hidden p-2 text-primary">
 <span class="material-symbols-outlined text-3xl">menu</span>
 </button>
-<a href="#contact-section" class="hidden md:inline-block px-6 py-2.5 bg-primary text-on-primary rounded-full font-bold transition-all active:scale-95 duration-200 ease-in-out">
+<a href="#contact-section" class="hidden md:inline-block px-6 py-2.5 btn-primary-gradient text-on-primary rounded-full font-bold transition-all active:scale-95 duration-200 ease-in-out">
                 Get Started
             </a>
 </div>
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-xl border-t border-slate-200 dark:border-slate-700">
+<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-surface/95 backdrop-blur-xl shadow-xl">
 <div class="flex flex-col px-8 py-6 gap-4 font-manrope text-sm font-semibold">
-<a class="text-cyan-600 py-2" href="index.html">Home</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 py-2" href="Water_ESG.html">Programs</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 py-2" href="CSR_Community.html">ESG Impact</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 py-2" href="#about-section">About Us</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-700 py-2" href="#contact-section">Contact</a>
-<a href="#contact-section" class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-center mt-2">Get Started</a>
+<a class="text-primary py-2" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="Water_ESG.html">Programs</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="CSR_Community.html">ESG Impact</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="blog.html">Insights</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="#about-section">About Us</a>
+<a class="text-on-surface-variant hover:text-primary py-2" href="#contact-section">Contact</a>
+<a href="#contact-section" class="btn-primary-gradient text-on-primary px-6 py-3 rounded-full font-bold text-center mt-2">Get Started</a>
 </div>
 </div>
 </nav>
 <main>
 <!-- Hero Section -->
 <section class="relative pt-40 pb-24 md:pt-56 md:pb-40 px-6 overflow-hidden">
-<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-fixed/30 via-surface to-surface"></div>
-<!-- Decorative "Water" Shapes -->
-<div class="absolute -top-20 -right-20 w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl"></div>
-<div class="absolute top-1/2 -left-20 w-64 h-64 bg-tertiary-fixed/20 rounded-full blur-3xl"></div>
+<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary-fixed/30 via-surface to-surface"></div>
+<!-- Decorative organic shapes -->
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-secondary-fixed/30 rounded-full blur-3xl"></div>
+<div class="absolute top-1/2 -left-20 w-64 h-64 bg-tertiary-fixed/30 rounded-full blur-3xl"></div>
 <div class="max-w-7xl mx-auto flex flex-col items-start">
-<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-container/10 text-primary rounded-full mb-8 font-semibold text-sm">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-fixed/40 text-primary rounded-full mb-8 font-semibold text-sm">
 <span class="material-symbols-outlined text-sm" data-icon="waves">waves</span>
                     Redefining Corporate Sustainability
                 </div>
@@ -136,10 +146,10 @@
                     ECHO by Ecolive Ventures Pvt. Ltd. transforms organizational culture into an ecologically conscious, high-performance ecosystem. Wellness of Nature &amp; Nature for Wellness — across Water, Waste, Energy, and Employee Health.
                 </p>
 <div class="flex flex-wrap gap-6">
-<a href="Water_ESG.html" class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-lg shadow-[0_10px_30px_rgba(14,100,121,0.2)] hover:bg-primary/90 transition-all inline-block">
+<a href="Water_ESG.html" class="px-8 py-4 btn-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-[0_10px_40px_rgba(24,28,27,0.12)] hover:opacity-95 transition-all inline-block">
                         Launch Your Program
                     </a>
-<a href="CSR_Community.html" class="px-8 py-4 bg-white/50 backdrop-blur-md border border-outline-variant/20 rounded-full font-bold text-lg text-primary hover:bg-white/80 transition-all inline-block">
+<a href="CSR_Community.html" class="px-8 py-4 bg-surface/70 backdrop-blur-md ghost-border rounded-full font-bold text-lg text-primary hover:bg-surface-container-low transition-all inline-block">
                         View Case Studies
                     </a>
 </div>
@@ -160,32 +170,32 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- Wellness Card -->
-<div class="group p-8 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/10 transition-all duration-500 hover:shadow-xl">
-<div class="w-14 h-14 bg-secondary-fixed/30 text-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<div class="group p-8 bg-surface-container-lowest rounded-xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(24,28,27,0.06)] hover:-translate-y-1">
+<div class="w-14 h-14 bg-secondary-fixed/40 text-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl" data-icon="spa">spa</span>
 </div>
 <h3 class="text-2xl font-bold mb-4">Wellness</h3>
 <p class="text-on-surface-variant leading-relaxed">Naturopathy, yoga sessions, and organic food promotion — practical eco-living practices for a healthier workforce.</p>
 </div>
 <!-- Water Card -->
-<div class="group p-8 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/10 transition-all duration-500 hover:shadow-xl mt-8 md:mt-0">
-<div class="w-14 h-14 bg-primary-fixed/30 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<div class="group p-8 bg-surface-container-lowest rounded-xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(24,28,27,0.06)] hover:-translate-y-1 mt-8 md:mt-0">
+<div class="w-14 h-14 bg-tertiary-fixed/40 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl" data-icon="water_drop">water_drop</span>
 </div>
 <h3 class="text-2xl font-bold mb-4">Water</h3>
 <p class="text-on-surface-variant leading-relaxed">Rainwater harvesting, groundwater recharge, and conservation projects across 11 states — 652M+ litres saved.</p>
 </div>
 <!-- Waste Card -->
-<div class="group p-8 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/10 transition-all duration-500 hover:shadow-xl mt-8 lg:mt-0">
-<div class="w-14 h-14 bg-tertiary-fixed/30 text-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<div class="group p-8 bg-surface-container-lowest rounded-xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(24,28,27,0.06)] hover:-translate-y-1 mt-8 lg:mt-0">
+<div class="w-14 h-14 bg-surface-variant text-tertiary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl" data-icon="recycling">recycling</span>
 </div>
 <h3 class="text-2xl font-bold mb-4">Waste</h3>
 <p class="text-on-surface-variant leading-relaxed">Practical, easy-to-implement, effective, and affordable waste management solutions — eliminating plastics and promoting recycling.</p>
 </div>
 <!-- Energy Card -->
-<div class="group p-8 bg-surface-container-lowest rounded-xl border border-transparent hover:border-primary/10 transition-all duration-500 hover:shadow-xl mt-8 lg:mt-0 lg:translate-y-8">
-<div class="w-14 h-14 bg-on-secondary-fixed-variant/10 text-on-secondary-fixed-variant rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<div class="group p-8 bg-surface-container-lowest rounded-xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(24,28,27,0.06)] hover:-translate-y-1 mt-8 lg:mt-0 lg:translate-y-8">
+<div class="w-14 h-14 bg-secondary-fixed/40 text-primary-container rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
 </div>
 <h3 class="text-2xl font-bold mb-4">Energy</h3>
@@ -207,7 +217,7 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
 <!-- Step 1 -->
 <div class="flex flex-col items-center text-center">
-<div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center mb-8 border-4 border-primary/10">
+<div class="w-20 h-20 rounded-full bg-white shadow-[0_10px_30px_rgba(24,28,27,0.06)] flex items-center justify-center mb-8 border-4 border-secondary-fixed/40">
 <span class="text-2xl font-bold text-primary">01</span>
 </div>
 <h4 class="text-xl font-bold mb-3">Awareness</h4>
@@ -231,7 +241,7 @@
 </div>
 <!-- Step 4 -->
 <div class="flex flex-col items-center text-center md:translate-y-16">
-<div class="w-20 h-20 rounded-full bg-primary shadow-2xl flex items-center justify-center mb-8">
+<div class="w-20 h-20 rounded-full btn-primary-gradient shadow-[0_15px_40px_rgba(24,28,27,0.18)] flex items-center justify-center mb-8">
 <span class="material-symbols-outlined text-white text-3xl" data-icon="check">check</span>
 </div>
 <h4 class="text-xl font-bold mb-3">Follow-up</h4>
@@ -243,31 +253,31 @@
 </section>
 <!-- Win-Win Outcome Section -->
 <section id="about-section" class="py-24 md:py-32 px-6">
-<div class="max-w-7xl mx-auto bg-primary text-on-primary rounded-xl p-12 md:p-24 relative overflow-hidden">
+<div class="max-w-7xl mx-auto btn-primary-gradient text-on-primary rounded-xl p-12 md:p-24 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
 <img alt="Nebula or water reflection" class="w-full h-full object-cover" data-alt="Abstract blue water reflection and sparkles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCofvQMhXk-dh8WqjNC4yWq_4J_AI_weaKIeZcOuueAsyuRCWDUodUfrBnONz3hrFVf8bDbB8zjyJHjAM-eNp9xxsp0mP6NTbAvdpBB7rBgVkguXa2xO4WLRuT6_T6P3PSkNG8a6Y4oCjPWY2fWHSNjDPx2wRNHe4rfHNh8L8-ZubmnrYPsNfmqVNoW0jKpkmmc89lR-TJDw-2tCrODVbEDKLioRtY2IspkaJVS_p-Zl4McNueQGvlbdXkT5XyqD995euHwa1L6AM"/>
 </div>
 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div>
 <h2 class="font-headline text-4xl md:text-6xl font-bold leading-tight mb-8">The Ultimate <br/>Win-Win Outcome</h2>
-<p class="text-xl text-primary-fixed leading-relaxed mb-10 max-w-lg">
+<p class="text-xl text-secondary-fixed leading-relaxed mb-10 max-w-lg">
                             Ecolive Ventures Pvt. Ltd. creates a win-win for all stakeholders. We don't preach, we practice — helping organizations reverse the damage inflicted on Earth through practical, affordable solutions.
                         </p>
 <ul class="space-y-6">
 <li class="flex items-center gap-4">
-<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed flex items-center justify-center">
 <span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
 </div>
 <span class="font-semibold">1,150+ Projects Completed</span>
 </li>
 <li class="flex items-center gap-4">
-<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed flex items-center justify-center">
 <span class="material-symbols-outlined text-sm" data-icon="energy_savings_leaf">energy_savings_leaf</span>
 </div>
 <span class="font-semibold">652M+ Litres of Water Conserved</span>
 </li>
 <li class="flex items-center gap-4">
-<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed flex items-center justify-center">
 <span class="material-symbols-outlined text-sm" data-icon="mood">mood</span>
 </div>
 <span class="font-semibold">11 States Across India</span>
@@ -276,7 +286,7 @@
 </div>
 <div class="bg-white/10 backdrop-blur-xl p-10 rounded-xl border border-white/20">
 <div class="mb-8">
-<span class="material-symbols-outlined text-5xl text-secondary-fixed" data-icon="format_quote">format_quote</span>
+<span class="material-symbols-outlined text-5xl text-secondary-fixed-dim" data-icon="format_quote">format_quote</span>
 <p class="text-2xl font-medium leading-relaxed mt-4 italic">
                                 <!-- TO BE DONE: Add real client testimonial -->
                                 "ECHO didn't just give us a checklist. They changed how our team feels about coming to work every morning. The environmental impact was just the beginning."
@@ -315,17 +325,17 @@
 <h3 class="text-2xl font-bold mb-4">Certified ECHO Partners</h3>
 <p class="text-sm leading-relaxed mb-6"><!-- TO BE DONE: Real partner count --> Join a growing network of forward-thinking organizations across India.</p>
 <div class="flex -space-x-4">
-<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-slate-300"></div>
-<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-slate-400"></div>
-<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-slate-500"></div>
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-surface-variant"></div>
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-outline-variant"></div>
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container bg-tertiary"></div>
 </div>
 </div>
-<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-10 flex items-center justify-between border border-primary/5">
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-10 flex items-center justify-between">
 <div class="max-w-sm">
 <h3 class="text-2xl font-bold mb-4">Ready to start your ripple effect?</h3>
 <p class="text-on-surface-variant">Contact our sustainability curators for a personalized strategy session.</p>
 </div>
-<a href="#contact-section" class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<a href="#contact-section" class="w-16 h-16 rounded-full btn-primary-gradient text-on-primary flex items-center justify-center shadow-[0_15px_40px_rgba(24,28,27,0.18)] hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
 </a>
 </div>
@@ -341,39 +351,39 @@
 <p class="text-xl text-on-surface-variant mb-10 leading-relaxed">Ready to transform your organization? Our sustainability experts are here to help you start your ECHO journey.</p>
 <div class="space-y-6">
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">mail</span></div>
+<div class="w-12 h-12 bg-secondary-fixed/40 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">mail</span></div>
 <div><p class="font-bold text-on-surface">Email Us</p><p class="text-on-surface-variant text-sm">info@ecolive.in</p></div>
 </div>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">call</span></div>
+<div class="w-12 h-12 bg-secondary-fixed/40 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">call</span></div>
 <div><p class="font-bold text-on-surface">Call Us</p><p class="text-on-surface-variant text-sm">+91 9871472211</p></div>
 </div>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">location_on</span></div>
+<div class="w-12 h-12 bg-secondary-fixed/40 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">location_on</span></div>
 <div><p class="font-bold text-on-surface">Gurugram Office</p><p class="text-on-surface-variant text-sm">438, Vipul Trade Center, Sohna Road, Gurugram</p></div>
 </div>
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">location_on</span></div>
+<div class="w-12 h-12 bg-secondary-fixed/40 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">location_on</span></div>
 <div><p class="font-bold text-on-surface">Jaipur Office</p><p class="text-on-surface-variant text-sm">Ecolive Ventures Pvt Ltd, 286, Rajendra Prasad Nagar A, 200 feet bye-pass, Near Ajmer Road, Jaipur - 302020</p></div>
 </div>
 </div>
 </div>
-<div class="bg-white/60 backdrop-blur-xl p-10 rounded-xl border border-white/60 shadow-2xl">
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl p-10 rounded-xl shadow-[0_30px_60px_rgba(24,28,27,0.06)]">
 <h3 class="text-2xl font-extrabold text-primary mb-8">Send us a message</h3>
 <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you soon.'); this.reset();">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Full Name</label>
-<input class="w-full px-6 py-4 rounded-lg bg-surface-container-low border-transparent focus:border-primary/20 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="John Doe" type="text" required/>
+<input class="w-full px-6 py-4 rounded-lg bg-surface-container-low border border-outline-variant/20 focus:border-secondary focus:ring-0 transition-all placeholder:text-outline/60" placeholder="John Doe" type="text" required/>
 </div>
 <div class="space-y-2">
 <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Email</label>
-<input class="w-full px-6 py-4 rounded-lg bg-surface-container-low border-transparent focus:border-primary/20 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="john@company.com" type="email" required/>
+<input class="w-full px-6 py-4 rounded-lg bg-surface-container-low border border-outline-variant/20 focus:border-secondary focus:ring-0 transition-all placeholder:text-outline/60" placeholder="john@company.com" type="email" required/>
 </div>
 </div>
 <div class="space-y-2">
 <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Subject</label>
-<select class="w-full px-6 py-4 rounded-lg bg-surface-container-low border-transparent focus:border-primary/20 focus:ring-0 transition-all">
+<select class="w-full px-6 py-4 rounded-lg bg-surface-container-low border border-outline-variant/20 focus:border-secondary focus:ring-0 transition-all">
 <option>Partnership Inquiry</option>
 <option>Launch a Program</option>
 <option>ESG Consulting</option>
@@ -382,9 +392,9 @@
 </div>
 <div class="space-y-2">
 <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Message</label>
-<textarea class="w-full px-6 py-4 rounded-lg bg-surface-container-low border-transparent focus:border-primary/20 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="Tell us about your sustainability goals..." rows="4" required></textarea>
+<textarea class="w-full px-6 py-4 rounded-lg bg-surface-container-low border border-outline-variant/20 focus:border-secondary focus:ring-0 transition-all placeholder:text-outline/60" placeholder="Tell us about your sustainability goals..." rows="4" required></textarea>
 </div>
-<button type="submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">Send Message</button>
+<button type="submit" class="w-full btn-primary-gradient text-on-primary py-4 rounded-full font-bold text-lg hover:shadow-[0_15px_40px_rgba(24,28,27,0.18)] hover:-translate-y-1 transition-all active:scale-95">Send Message</button>
 </form>
 </div>
 </div>
@@ -392,51 +402,51 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full rounded-t-[3rem] mt-20 bg-slate-100 dark:bg-slate-950">
+<footer class="w-full rounded-t-[3rem] mt-20 bg-primary text-on-primary">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
 <div class="col-span-1 md:col-span-1">
-<a href="index.html" class="mb-6 block"><img src="logo.svg" alt="Ecolive" class="h-7"></a>
-<p class="font-manrope text-sm leading-relaxed text-slate-500 dark:text-slate-400 mb-8">
+<a href="index.html" class="mb-6 block"><img src="logo.svg" alt="Ecolive" class="h-7 brightness-0 invert"></a>
+<p class="font-manrope text-sm leading-relaxed text-primary-fixed/80 mb-8">
                     Ecolive Ventures Pvt. Ltd. — Wellness of Nature &amp; Nature for Wellness. Reversing the damage we have inflicted on Earth.
                 </p>
 <div class="flex gap-4">
-<span class="material-symbols-outlined text-slate-400" data-icon="public">public</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="eco">eco</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="water">water</span>
+<span class="material-symbols-outlined text-primary-fixed/70" data-icon="public">public</span>
+<span class="material-symbols-outlined text-primary-fixed/70" data-icon="eco">eco</span>
+<span class="material-symbols-outlined text-primary-fixed/70" data-icon="water">water</span>
 </div>
 </div>
 <div class="col-span-1">
-<h4 class="font-bold text-cyan-800 dark:text-cyan-300 mb-6">Programs</h4>
+<h4 class="font-bold text-secondary-fixed mb-6">Programs</h4>
 <div class="flex flex-col gap-4 font-manrope text-sm">
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="Water_ESG.html">Wellness</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="Water_ESG.html">Water</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="Water_ESG.html">Waste</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="Water_ESG.html">Energy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="Water_ESG.html">Wellness</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="Water_ESG.html">Water</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="Water_ESG.html">Waste</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="Water_ESG.html">Energy</a>
 </div>
 </div>
 <div class="col-span-1">
-<h4 class="font-bold text-cyan-800 dark:text-cyan-300 mb-6">Company</h4>
+<h4 class="font-bold text-secondary-fixed mb-6">Company</h4>
 <div class="flex flex-col gap-4 font-manrope text-sm">
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="#">Privacy Policy</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="#">Terms of Service</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-300 ease-in-out hover:underline decoration-cyan-500/30 underline-offset-4" href="#">Cookie Policy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="#">Terms of Service</a>
+<a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all duration-300 ease-in-out hover:underline decoration-secondary-fixed/40 underline-offset-4" href="#">Cookie Policy</a>
 </div>
 </div>
 <div class="col-span-1">
-<h4 class="font-bold text-cyan-800 dark:text-cyan-300 mb-6">Newsletter</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Stay updated with our latest ESG insights.</p>
+<h4 class="font-bold text-secondary-fixed mb-6">Newsletter</h4>
+<p class="text-sm text-primary-fixed/70 mb-4">Stay updated with our latest ESG insights.</p>
 <div class="flex">
-<input class="bg-white dark:bg-slate-900 border-none rounded-l-full px-4 py-2 text-sm w-full focus:ring-1 focus:ring-primary" placeholder="Email address" type="email"/>
-<button class="bg-primary text-on-primary px-4 py-2 rounded-r-full">
+<input class="bg-primary-container border-none rounded-l-full px-4 py-2 text-sm w-full text-on-primary placeholder:text-primary-fixed/50 focus:ring-1 focus:ring-secondary-fixed" placeholder="Email address" type="email"/>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-r-full">
 <span class="material-symbols-outlined text-sm" data-icon="send">send</span>
 </button>
 </div>
 </div>
 </div>
-<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-manrope text-sm leading-relaxed text-slate-500 dark:text-slate-400">© 2025 Ecolive Ventures Pvt. Ltd. All rights reserved.</p>
-<div class="flex gap-6 font-manrope text-xs text-slate-400">
-<a href="https://ecolive-antidote.vercel.app/" target="_blank" class="hover:text-cyan-600">ecolive-antidote.vercel.app</a>
+<div class="max-w-7xl mx-auto px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-primary-container/50 rounded-t-3xl">
+<p class="font-manrope text-sm leading-relaxed text-primary-fixed/70">© 2025 Ecolive Ventures Pvt. Ltd. All rights reserved.</p>
+<div class="flex gap-6 font-manrope text-xs text-primary-fixed/60">
+<a href="https://ecolive-antidote.vercel.app/" target="_blank" class="hover:text-secondary-fixed">ecolive-antidote.vercel.app</a>
 <span>Powered by Ecolive</span>
 </div>
 </div>
