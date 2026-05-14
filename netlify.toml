@@ -1,7 +1,19 @@
 [build]
   publish = "."
+  command = "node generate-posts.js"
 
+[build.environment]
+  NODE_VERSION = "18"
+
+# Static post pages — served directly, no redirect needed
+[[redirects]]
+  from = "/posts/*"
+  to   = "/posts/:splat"
+  status = 200
+  force  = false
+
+# SPA fallback for all other paths
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to   = "/index.html"
   status = 200
