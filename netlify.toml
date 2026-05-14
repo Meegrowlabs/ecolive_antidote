@@ -5,14 +5,27 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Static post pages — served directly, no redirect needed
+# Clean blog URL: ecolive.in/blog → blog.html
 [[redirects]]
-  from = "/posts/*"
-  to   = "/posts/:splat"
+  from   = "/blog"
+  to     = "/blog.html"
   status = 200
-  force  = false
+  force  = true
 
-# SPA fallback for all other paths
+# Clean post URLs: ecolive.in/blog/:slug → posts/:slug.html
+[[redirects]]
+  from   = "/blog/:slug"
+  to     = "/posts/:slug.html"
+  status = 200
+  force  = true
+
+# Legacy .html → clean URL (301 permanent)
+[[redirects]]
+  from   = "/blog.html"
+  to     = "/blog"
+  status = 301
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to   = "/index.html"

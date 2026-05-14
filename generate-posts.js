@@ -48,7 +48,7 @@ const NAV = `
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html">Home</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="/Water_ESG.html">Programs</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="/CSR_Community.html">ESG Impact</a>
-      <a class="text-primary border-b-2 border-secondary pb-1" href="/blog.html">Insights</a>
+      <a class="text-primary border-b-2 border-secondary pb-1" href="/blog">Insights</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html#about-section">About Us</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html#contact-section">Contact</a>
     </div>
@@ -60,7 +60,7 @@ const NAV = `
       <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html">Home</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="/Water_ESG.html">Programs</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="/CSR_Community.html">ESG Impact</a>
-      <a class="text-primary py-2" href="/blog.html">Insights</a>
+      <a class="text-primary py-2" href="/blog">Insights</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html#about-section">About Us</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html#contact-section">Contact</a>
     </div>
@@ -77,7 +77,7 @@ const FOOTER = `
     <div>
       <h4 class="font-bold text-secondary-fixed mb-6">Insights</h4>
       <div class="flex flex-col gap-4 font-manrope text-sm">
-        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/blog.html">All Articles</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/blog">All Articles</a>
       </div>
     </div>
     <div>
@@ -172,7 +172,7 @@ function relCard(p) {
   const cat = (p._embedded?.['wp:term']?.[0] || [{ name: 'Insights' }])[0];
   return `
   <article class="group">
-    <a href="/posts/${p.slug}.html" class="block">
+    <a href="/blog/${p.slug}" class="block">
       <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container">
         ${img
           ? `<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="${img}" alt="" loading="lazy"/>`
@@ -210,7 +210,7 @@ function generatePostPage(post, related) {
 <meta property="og:description" content="${excerpt.substring(0, 160)}"/>
 <meta property="og:type" content="article"/>
 ${featImg ? `<meta property="og:image" content="${featImg}"/>` : ''}
-<link rel="canonical" href="https://ecolive.in/posts/${post.slug}.html"/>
+<link rel="canonical" href="https://ecolive.in/blog/${post.slug}"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 ${HEAD_STYLES}
 </head>
@@ -226,7 +226,7 @@ ${NAV}
   <article>
     <header class="pt-32 md:pt-40 pb-16 px-6">
       <div class="max-w-3xl mx-auto">
-        <a href="/blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors mb-10">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors mb-10">
           <span class="material-symbols-outlined text-base">arrow_back</span> Back to Insights
         </a>
         <div class="flex flex-wrap items-center gap-3 mb-8">
@@ -277,7 +277,7 @@ ${NAV}
         <p class="text-xs uppercase tracking-widest font-bold text-outline mb-2">Written by</p>
         <h3 class="font-headline text-2xl font-bold mb-2">${author.name}</h3>
         <p class="text-on-surface-variant leading-relaxed mb-6">${author.description || 'Ecolive Ventures Pvt. Ltd. — working at the intersection of water, waste, energy, and human wellbeing.'}</p>
-        <a href="/blog.html" class="px-5 py-2 rounded-full ghost-border text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">All articles →</a>
+        <a href="/blog" class="px-5 py-2 rounded-full ghost-border text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">All articles →</a>
       </div>
     </div>
   </section>
@@ -287,7 +287,7 @@ ${NAV}
     <div class="max-w-7xl mx-auto">
       <div class="flex items-end justify-between flex-wrap gap-6 mb-12">
         <h2 class="font-headline text-3xl md:text-5xl font-extrabold tracking-tighter">Keep reading.</h2>
-        <a href="/blog.html" class="text-secondary font-bold flex items-center gap-2 hover:gap-4 transition-all">All articles <span class="material-symbols-outlined">arrow_forward</span></a>
+        <a href="/blog" class="text-secondary font-bold flex items-center gap-2 hover:gap-4 transition-all">All articles <span class="material-symbols-outlined">arrow_forward</span></a>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">${relHtml}</div>
     </div>
