@@ -140,30 +140,19 @@
   </div>
 </section>
 
-<!--
-  ════════════════════════════════════════════════════════════════════════
-  WORDPRESS INTEGRATION SLOT
-  ════════════════════════════════════════════════════════════════════════
-  Replace the section below with the WordPress blog feed. Options:
-    1. Server-side render via WP REST API (e.g. /wp-json/wp/v2/posts)
-       and inject post cards into #wp-articles-grid.
-    2. Embed the WP archive (subdomain or subdirectory) via iframe in
-       #wp-articles-frame.
-    3. Replace this whole <section> with a server-side include /
-       template partial that renders the WP loop.
-
-  Keep the styling tokens (rounded-xl, ghost-border, font-headline)
-  consistent so any WordPress-rendered cards inherit the same look.
-  ════════════════════════════════════════════════════════════════════════
--->
 <section id="wp-articles" class="px-6 pb-24">
   <div class="max-w-7xl mx-auto">
-    <div id="wp-articles-grid" class="min-h-[400px] flex items-center justify-center bg-surface-container-lowest rounded-xl ghost-border p-16 text-center">
-      <div>
-        <p class="text-xs uppercase tracking-widest font-bold text-outline mb-3">WordPress feed slot</p>
-        <h2 class="font-headline text-2xl font-bold text-on-surface mb-2">Articles loading from WordPress.</h2>
-        <p class="text-on-surface-variant max-w-md mx-auto">Connect the WP feed here — REST API, iframe, or server-side include. Layout tokens preserved so post cards drop in without restyling.</p>
+    <!-- Category filter bar — populated by JS -->
+    <div id="wp-filter-bar" class="flex flex-wrap gap-3 mb-10 hidden"></div>
+    <!-- Post grid — populated by JS -->
+    <div id="wp-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[400px]">
+      <div id="wp-loading" class="col-span-full flex flex-col items-center justify-center py-24 gap-4">
+        <div class="w-10 h-10 border-4 border-secondary-fixed border-t-secondary rounded-full animate-spin"></div>
+        <p class="text-on-surface-variant text-sm font-semibold">Loading articles…</p>
       </div>
+    </div>
+    <div id="wp-load-more-wrap" class="flex justify-center mt-14 hidden">
+      <button id="wp-load-more" class="px-8 py-4 rounded-full ghost-border font-bold text-on-surface-variant hover:text-primary hover:border-primary transition-all">Load more articles</button>
     </div>
   </div>
 </section>
@@ -248,5 +237,104 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').classList.toggle('shadow-xl', window.scrollY > 50);
   });
+</script>
+
+<script>
+  /* ── WordPress REST API — update WP_API_BASE after migrating to Hostinger ── */
+  const WP_API_BASE = 'https://ecolive.in/wp-json/wp/v2';
+  const PER_PAGE = 9;
+  let currentPage = 1, totalPages = 1, activeCategory = '';
+
+  const grid = document.getElementById('wp-articles-grid');
+  const loading = document.getElementById('wp-loading');
+  const loadMoreWrap = document.getElementById('wp-load-more-wrap');
+  const filterBar = document.getElementById('wp-filter-bar');
+
+  function formatDate(iso) {
+    return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function readTime(html) {
+    const words = html.replace(/<[^>]+>/g, '').split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200)) + ' min read';
+  }
+  function stripTags(html) { return html.replace(/<[^>]+>/g, ''); }
+
+  function postCard(post) {
+    const img = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
+    const cats = post._embedded?.['wp:term']?.[0] || [];
+    const cat = cats[0] || { name: 'Insights' };
+    const excerpt = stripTags(post.excerpt.rendered).trim().substring(0, 130).trimEnd() + '…';
+    return `
+      <article class="group flex flex-col">
+        <a href="blog-post.html?slug=${post.slug}" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container">
+            ${img
+              ? `<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="${img}" alt="" loading="lazy"/>`
+              : `<div class="w-full h-full bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">eco</span></div>`}
+          </div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-[11px] uppercase tracking-widest font-bold text-secondary">${cat.name}</span>
+            <span class="text-[11px] uppercase tracking-widest font-bold text-outline">${readTime(post.content?.rendered || '')}</span>
+            <span class="text-[11px] uppercase tracking-widest font-bold text-outline">${formatDate(post.date)}</span>
+          </div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">${post.title.rendered}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-1">${excerpt}</p>
+        </a>
+      </article>`;
+  }
+
+  async function fetchPosts(page = 1, catId = '') {
+    loading.classList.remove('hidden');
+    loadMoreWrap.classList.add('hidden');
+    const catParam = catId ? `&categories=${catId}` : '';
+    try {
+      const res = await fetch(`${WP_API_BASE}/posts?per_page=${PER_PAGE}&page=${page}&_embed${catParam}`);
+      totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1', 10);
+      const posts = await res.json();
+      loading.classList.add('hidden');
+      if (page === 1) grid.querySelectorAll('article').forEach(el => el.remove());
+      if (!Array.isArray(posts) || !posts.length) {
+        grid.insertAdjacentHTML('beforeend', '<div class="col-span-full py-16 text-center text-on-surface-variant font-semibold">No articles found.</div>');
+        return;
+      }
+      posts.forEach(p => grid.insertAdjacentHTML('beforeend', postCard(p)));
+      if (page < totalPages) loadMoreWrap.classList.remove('hidden');
+    } catch (e) {
+      loading.classList.add('hidden');
+      grid.insertAdjacentHTML('beforeend', '<div class="col-span-full py-16 text-center text-on-surface-variant font-semibold">Could not load articles. Please try again later.</div>');
+    }
+  }
+
+  async function fetchCategories() {
+    try {
+      const res = await fetch(`${WP_API_BASE}/categories?per_page=50&hide_empty=true`);
+      const cats = await res.json();
+      filterBar.classList.remove('hidden');
+      const allBtn = filterBar.querySelector('[data-cat=""]');
+      cats.forEach(cat => {
+        filterBar.insertAdjacentHTML('beforeend',
+          `<button data-cat="${cat.id}" class="wp-filter-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">${cat.name}</button>`);
+      });
+      filterBar.querySelectorAll('.wp-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBar.querySelectorAll('.wp-filter-btn').forEach(b => {
+            b.className = 'wp-filter-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all';
+          });
+          btn.className = 'wp-filter-btn px-5 py-2 rounded-full text-sm font-bold bg-primary text-on-primary';
+          activeCategory = btn.dataset.cat;
+          currentPage = 1;
+          fetchPosts(1, activeCategory);
+        });
+      });
+    } catch (e) { /* categories optional */ }
+  }
+
+  document.getElementById('wp-load-more').addEventListener('click', () => {
+    currentPage++;
+    fetchPosts(currentPage, activeCategory);
+  });
+
+  fetchCategories();
+  fetchPosts();
 </script>
 </body></html>
