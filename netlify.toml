@@ -1,71 +1,25 @@
 [build]
   publish = "."
-  command = "node generate-posts.js"
+  command = "echo 'No build step — static repo + WordPress proxy.'"
 
 [build.environment]
   NODE_VERSION = "18"
 
-# === Blog listing page ===
+# === Blog listing page (static) ===
 [[redirects]]
   from   = "/blog"
   to     = "/blog.html"
   status = 200
   force  = true
 
-# === 9 existing static posts (priority — served by Netlify CDN) ===
-[[redirects]]
-  from   = "/blog/reduce-reuse-recycle-recharge-priority-order-india"
-  to     = "/posts/reduce-reuse-recycle-recharge-priority-order-india.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/why-water-quality-is-the-foundation-of-indias-human-and-economic-growth"
-  to     = "/posts/why-water-quality-is-the-foundation-of-indias-human-and-economic-growth.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/why-fair-water-pricing-can-make-india-water-positive"
-  to     = "/posts/why-fair-water-pricing-can-make-india-water-positive.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/navratras-the-ancient-blueprint-for-cleansing-mind-body-and-planet"
-  to     = "/posts/navratras-the-ancient-blueprint-for-cleansing-mind-body-and-planet.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/the-4r-water-framework-how-reduce-reuse-recycle-recharge-can-make-your-facility-water-positive"
-  to     = "/posts/the-4r-water-framework-how-reduce-reuse-recycle-recharge-can-make-your-facility-water-positive.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/gas-has-alternatives-water-doesnt"
-  to     = "/posts/gas-has-alternatives-water-doesnt.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/jal-mahotsav-2026-what-president-murmus-national-duty-call-means-for-indian-corporates"
-  to     = "/posts/jal-mahotsav-2026-what-president-murmus-national-duty-call-means-for-indian-corporates.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/industrial-rainwater-harvesting-india-roi-guide"
-  to     = "/posts/industrial-rainwater-harvesting-india-roi-guide.html"
-  status = 200
-
-[[redirects]]
-  from   = "/blog/brsr-2025-26-what-changed-how-to-prepare-your-water-esg-reporting"
-  to     = "/posts/brsr-2025-26-what-changed-how-to-prepare-your-water-esg-reporting.html"
-  status = 200
-
-# === Fallback: any other /blog/* proxies to WordPress on Hostinger ===
+# === All /blog/* requests proxy to WordPress on Hostinger ===
 [[redirects]]
   from   = "/blog/*"
   to     = "https://cms.ecolive.in/blog/:splat"
   status = 200
   force  = true
 
-# === WordPress assets proxied transparently ===
+# === WordPress assets ===
 [[redirects]]
   from   = "/wp-content/*"
   to     = "https://cms.ecolive.in/wp-content/:splat"
