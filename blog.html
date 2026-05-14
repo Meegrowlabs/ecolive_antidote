@@ -144,15 +144,101 @@
   <div class="max-w-7xl mx-auto">
     <!-- Category filter bar — populated by JS -->
     <div id="wp-filter-bar" class="flex flex-wrap gap-3 mb-10 hidden"></div>
-    <!-- Post grid — populated by JS -->
-    <div id="wp-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[400px]">
-      <div id="wp-loading" class="col-span-full flex flex-col items-center justify-center py-24 gap-4">
-        <div class="w-10 h-10 border-4 border-secondary-fixed border-t-secondary rounded-full animate-spin"></div>
-        <p class="text-on-surface-variant text-sm font-semibold">Loading articles…</p>
-      </div>
+    <!-- Category filter bar -->
+    <div class="flex flex-wrap gap-3 mb-10">
+      <button onclick="filterPosts('')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold bg-primary text-on-primary" data-cat="">All</button>
+      <button onclick="filterPosts('Water Sustainability')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="Water Sustainability">Water Sustainability</button>
+      <button onclick="filterPosts('ESG')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="ESG">ESG</button>
+      <button onclick="filterPosts('BRSR Compliance')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="BRSR Compliance">BRSR Compliance</button>
+      <button onclick="filterPosts('Rainwater Harvesting')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="Rainwater Harvesting">Rainwater Harvesting</button>
+      <button onclick="filterPosts('Policy Updates')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="Policy Updates">Policy Updates</button>
+      <button onclick="filterPosts('Thought Leadership')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="Thought Leadership">Thought Leadership</button>
+      <button onclick="filterPosts('Sustainability')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-cat="Sustainability">Sustainability</button>
     </div>
-    <div id="wp-load-more-wrap" class="flex justify-center mt-14 hidden">
-      <button id="wp-load-more" class="px-8 py-4 rounded-full ghost-border font-bold text-on-surface-variant hover:text-primary hover:border-primary transition-all">Load more articles</button>
+    <!-- Static post grid -->
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <article class="group flex flex-col" data-cat="Water Sustainability">
+        <a href="/posts/reduce-reuse-recycle-recharge-priority-order-india.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">water_drop</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Water Sustainability</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">6 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">8 May 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Reduce, Reuse, Recycle, Recharge: India's Water Priority Order</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">The 4R framework provides a structured path to water positivity. Learn how Indian facilities can implement each step to achieve meaningful water conservation.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="ESG">
+        <a href="/posts/why-water-quality-is-the-foundation-of-indias-human-and-economic-growth.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">eco</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">ESG</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">8 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">12 Apr 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Why Water Quality Is the Foundation of India's Human and Economic Growth</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Over 70% of India's water supply is contaminated, costing the economy 6% of GDP annually. Clean water is the single most leveraged investment India can make.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="ESG">
+        <a href="/posts/why-fair-water-pricing-can-make-india-water-positive.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">price_check</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">ESG</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">7 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">28 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Why Fair Water Pricing Can Make India Water Positive</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">India's water is priced below cost across agriculture, industry, and municipalities. Fair pricing makes water's true value visible.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="Sustainability">
+        <a href="/posts/navratras-the-ancient-blueprint-for-cleansing-mind-body-and-planet.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">spa</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Sustainability</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">5 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">21 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Navratras: The Ancient Blueprint for Cleansing Mind, Body, and Planet</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">The nine-day festival of Navratri is a 5,000-year-old protocol for ecological reset that modern sustainability frameworks are only beginning to understand.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="Water Sustainability">
+        <a href="/posts/the-4r-water-framework-how-reduce-reuse-recycle-recharge-can-make-your-facility-water-positive.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">recycling</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Water Sustainability</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">9 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">18 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">The 4R Water Framework: How to Make Your Facility Water Positive</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">A practical implementation guide with step-by-step breakdowns, cost benchmarks, and BRSR alignment for Indian industrial facilities.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="Thought Leadership">
+        <a href="/posts/gas-has-alternatives-water-doesnt.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">format_quote</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Thought Leadership</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">5 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">15 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Gas Has Alternatives. Water Doesn't.</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">There is no substitute for water. That asymmetry should fundamentally reshape how corporate ESG strategies treat water risk.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="Policy Updates">
+        <a href="/posts/jal-mahotsav-2026-what-president-murmus-national-duty-call-means-for-indian-corporates.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">policy</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Policy Updates</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">6 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">12 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Jal Mahotsav 2026: What President Murmu's 'National Duty' Call Means for Indian Corporates</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Direct implications for corporate ESG strategy, BRSR reporting, and CSR spend allocation from the President's water stewardship declaration.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="Rainwater Harvesting">
+        <a href="/posts/industrial-rainwater-harvesting-india-roi-guide.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">water</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">Rainwater Harvesting</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">10 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">9 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">Rainwater Harvesting for Industries in India: The Complete ROI Guide (2026)</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Payback periods, regulatory requirements, and exact ROI calculations for industrial rainwater harvesting across Indian facility types.</p>
+        </a>
+      </article>
+
+      <article class="group flex flex-col" data-cat="BRSR Compliance">
+        <a href="/posts/brsr-2025-26-what-changed-how-to-prepare-your-water-esg-reporting.html" class="block">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-outline">assignment</span></div>
+          <div class="flex items-center gap-3 mb-3"><span class="text-[11px] uppercase tracking-widest font-bold text-secondary">BRSR Compliance</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">8 min read</span><span class="text-[11px] uppercase tracking-widest font-bold text-outline">9 Mar 2026</span></div>
+          <h3 class="font-headline text-xl font-bold mb-3 leading-snug group-hover:text-primary transition-colors">BRSR 2025-26: What Changed & How to Prepare Your Water & ESG Reporting</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Material changes to water and energy disclosures in SEBI's updated BRSR framework — what changed and how to prepare.</p>
+        </a>
+      </article>
+
     </div>
   </div>
 </section>
@@ -240,7 +326,19 @@
 </script>
 
 <script>
-  /* ── WordPress REST API — update WP_API_BASE after migrating to Hostinger ── */
+  /* ── Category filter ── */
+  function filterPosts(cat) {
+    document.querySelectorAll('.cat-btn').forEach(b => {
+      b.className = b.dataset.cat === cat
+        ? 'cat-btn px-5 py-2 rounded-full text-sm font-bold bg-primary text-on-primary'
+        : 'cat-btn px-5 py-2 rounded-full text-sm font-bold border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all';
+    });
+    document.querySelectorAll('#posts-grid article').forEach(a => {
+      a.style.display = (!cat || a.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  /* ── WordPress REST API (live fallback — update WP_API_BASE after Hostinger migration) ── */
   const WP_API_BASE = 'https://ecolive.in/wp-json/wp/v2';
   const PER_PAGE = 9;
   let currentPage = 1, totalPages = 1, activeCategory = '';
