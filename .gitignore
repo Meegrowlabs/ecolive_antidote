@@ -3,3 +3,4 @@
 
 # Helper scripts (not needed in production)
 create-static-posts.js
+.claude/
