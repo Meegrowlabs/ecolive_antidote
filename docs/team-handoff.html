@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Headless WordPress Onboarding — Team Handoff</title>
+<style>
+  @page { margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif; color: #181c1b; line-height: 1.6; font-size: 11pt; max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 26pt; font-weight: 800; letter-spacing: -0.02em; color: #00261b; margin: 1.5em 0 0.5em; page-break-after: avoid; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 18pt; font-weight: 700; letter-spacing: -0.01em; color: #00261b; margin: 2em 0 0.5em; padding-bottom: 0.3em; border-bottom: 2px solid #97fa85; page-break-after: avoid; }
+  h3 { font-size: 13pt; font-weight: 700; color: #00261b; margin: 1.5em 0 0.5em; page-break-after: avoid; }
+  h4 { font-size: 11pt; font-weight: 700; color: #006e09; margin: 1.2em 0 0.3em; }
+  p { margin: 0.6em 0; }
+  a { color: #006e09; text-decoration: none; border-bottom: 1px dotted #006e09; }
+  ul, ol { margin: 0.6em 0; padding-left: 1.6em; }
+  li { margin: 0.2em 0; }
+  code { background: #f1f4f2; padding: 0.1em 0.4em; border-radius: 3px; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 0.9em; color: #006e09; }
+  pre { background: #00261b; color: #97fa85; padding: 1em 1.2em; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.5; page-break-inside: avoid; }
+  pre code { background: none; color: inherit; padding: 0; }
+  blockquote { border-left: 4px solid #97fa85; padding: 0.5em 1em; background: #f7faf8; margin: 1em 0; color: #3f4844; font-style: italic; page-break-inside: avoid; }
+  hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, #c0c8c3, transparent); margin: 2em 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; page-break-inside: avoid; font-size: 10pt; }
+  th { background: #00261b; color: white; text-align: left; padding: 0.6em 0.8em; font-weight: 700; }
+  td { padding: 0.5em 0.8em; border-bottom: 1px solid #e0e3e1; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7faf8; }
+  strong { color: #00261b; font-weight: 700; }
+  .footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #e0e3e1; font-size: 9pt; color: #6f7975; text-align: center; }
+</style>
+</head>
+<body>
+<h1>Headless WordPress Onboarding Tool — Team Handoff</h1><p><strong>Status:</strong> Production-ready (v0.1.0) <strong>Repo:</strong> <a href="https://github.com/Meegrowlabs/headless-wp-onboard">github.com/Meegrowlabs/headless-wp-onboard</a> <strong>Proof of concept:</strong> ecolive.in <strong>Date:</strong> 15 May 2026</p><hr><h2>1. What problem this solves</h2><p>When a new client wants a website with a blog, we used to:</p><ol><li>Build a static site (HTML/CSS)</li><li>Set up WordPress somewhere</li><li>Manually configure DNS</li><li>Manually edit a dozen WordPress settings</li><li>Manually install plugins to fix SEO</li><li>Manually copy blog content over</li><li>Manually generate Netlify config</li></ol><p>That took <strong>3–6 hours</strong> per client and was error-prone — every step has a quirk that the next person doesn't remember.</p><p>This tool does steps 3–7 automatically in <strong>about 30 minutes</strong>, and bakes in every weird bug we hit on the ecolive.in build so the team never re-discovers them.</p><hr><h2>2. Architecture installed</h2><pre><code class="lang-">                     Visitor
+                        │
+                        ▼
+         ┌────────────────────────────────┐
+         │   yourbrand.com  →  Netlify    │  Static site
+         └────────┬───────────────────────┘
+                  │
+                  │ /blog/* requests
+                  ▼  reverse proxy
+         ┌────────────────────────────────┐
+         │  cms.yourbrand.com  →  Hostinger│  WordPress
+         │       (Editor only —            │  (you log in
+         │        public visitors get      │   here to write)
+         │        301'd to yourbrand.com)  │
+         └────────────────────────────────┘
+</code></pre><ul><li>Visitors only see <code>yourbrand.com/blog/...</code> URLs — clean and SEO-friendly</li><li>The team writes in WordPress at <code>cms.yourbrand.com/wp-admin</code></li><li>New posts appear live within seconds (no rebuild needed — proxy fetches latest)</li><li>Canonical URLs, sitemap, robots.txt all served from the primary domain</li></ul><hr><h2>3. What you can do with the tool</h2><h3>Three ways to drive it</h3><table><thead><tr><th>Method</th><th>Command</th><th>Best for</th></tr></thead><tbody><tr><td><strong>A. CLI</strong> (recommended)</td><td><code>npx headless-wp-onboard init</code></td><td>You/teammate setting up directly</td></tr><tr><td><strong>B. AI agent playbook</strong></td><td>Open <code>PLAYBOOK.md</code>, tell Claude/Codex/Cursor "follow this"</td><td>Working through an AI assistant</td></tr><tr><td><strong>C. Template repo</strong></td><td>Copy <code>starter-template/</code> for new client's static site</td><td>Starting a brand new site from scratch</td></tr></tbody></table><h3>Commands the CLI supports</h3><pre><code class="lang-sh"># Full guided setup — runs everything (10-12 questions)
+headless-wp-onboard init
+
+# Or run individual pieces:
+headless-wp-onboard configure-wp     # Set WP options (title, URLs, permalinks)
+headless-wp-onboard install-plugin   # Build &amp; upload SEO redirect plugin
+headless-wp-onboard migrate --posts posts.json
+headless-wp-onboard dns              # Provision NS records for cms subdomain
+headless-wp-onboard generate-files   # Write netlify.toml + robots.txt
+headless-wp-onboard verify           # Run 7 smoke tests
+</code></pre><hr><h2>4. What's automated vs manual</h2><table><thead><tr><th>Step</th><th>Status</th><th>Where</th></tr></thead><tbody><tr><td>Buy domain</td><td>❌ Manual</td><td>Any registrar</td></tr><tr><td>Hostinger account + WP install</td><td>❌ Manual</td><td>hPanel UI</td></tr><tr><td>Copy Hostinger NS pair</td><td>❌ Manual</td><td>Hostinger UI</td></tr><tr><td>Configure WP URLs and permalinks</td><td>✅ Auto</td><td>XML-RPC</td></tr><tr><td>Set site title / tagline</td><td>✅ Auto</td><td>XML-RPC</td></tr><tr><td>Build &amp; upload SEO redirect plugin</td><td>✅ Auto</td><td>REST API</td></tr><tr><td>Activate plugin</td><td>✅ Auto</td><td>REST API</td></tr><tr><td>Purge LiteSpeed cache</td><td>✅ Auto</td><td>admin-ajax</td></tr><tr><td>DNS — Cloudflare</td><td>✅ Auto</td><td>Cloudflare API</td></tr><tr><td>DNS — Netlify</td><td>✅ Auto</td><td>Netlify API</td></tr><tr><td>DNS — GoDaddy / Hostinger</td><td>❌ Manual</td><td>Prints exact records</td></tr><tr><td>Bulk migrate posts</td><td>✅ Auto</td><td>XML-RPC</td></tr><tr><td>Generate netlify.toml</td><td>✅ Auto</td><td>Template render</td></tr><tr><td>Generate robots.txt</td><td>✅ Auto</td><td>Template render</td></tr><tr><td>Smoke tests</td><td>✅ Auto</td><td>fetch()</td></tr></tbody></table><hr><h2>5. Prerequisites</h2><h3>What the client (or you) must do BEFORE running the tool</h3><ol><li><strong>Buy a domain</strong> at any registrar.</li><li><strong>Create a Hostinger account</strong> and install WordPress at <code>cms.&amp;lt;domain&amp;gt;</code> (e.g. <code>cms.yourbrand.com</code>).</li><li>From Hostinger hPanel → your WP site → Domain → Connect, <strong>copy the nameserver pair</strong> shown (e.g. <code>aurora.dns-parking.com</code> / <code>nebula.dns-parking.com</code>).</li><li><strong>Decide where DNS is managed</strong> for the primary domain:</li></ol><p>- Cloudflare → get an API token (My Profile → API Tokens → Create → "Edit zone DNS" template, scoped to the domain's zone)    - Netlify DNS → get a personal access token (User settings → Applications → Personal access tokens → New)    - GoDaddy / Hostinger / other → manual — the tool prints exact records to paste</p><ol><li>The <strong>static site repo</strong> must exist (a basic HTML site). If not, copy <code>starter-template/</code> from this tool.</li></ol><h3>What you need locally</h3><ul><li><strong>Node.js 18+</strong> (check with <code>node -v</code>)</li><li><strong><code>zip</code> command</strong> (preinstalled on macOS and most Linux)</li><li><strong><code>git</code> and <code>gh</code></strong> (GitHub CLI) — optional but useful</li><li>A clone of the static-site repo for the client</li></ul><hr><h2>6. How to test it — full walkthrough</h2><p>This is the script for a teammate to follow on a fresh client. Pick any test domain you control. If you don't want to use a real domain yet, you can do a "dry run" by pointing only the cms subdomain to a test Hostinger site.</p><h3>Step 0 — Install the tool</h3><pre><code class="lang-sh">git clone git@github.com:Meegrowlabs/headless-wp-onboard.git
+cd headless-wp-onboard
+npm install
+</code></pre><p>(Or, once published to npm: <code>npx headless-wp-onboard init</code>)</p><h3>Step 1 — Prepare the WordPress side</h3><p>Manually in Hostinger hPanel:</p><ol><li>Add new website → choose subdomain (e.g. <code>cms.testbrand.com</code>)</li><li>Install WordPress</li><li>Set admin email/password (you'll need these soon)</li><li>Go to Domain → Connect, copy the <strong>nameserver pair</strong> (looks like <code>aurora.dns-parking.com</code> and <code>nebula.dns-parking.com</code>)</li></ol><h3>Step 2 — Run the CLI</h3><pre><code class="lang-sh">node bin/cli.js init
+</code></pre><p>You'll be asked:</p><table><thead><tr><th>Prompt</th><th>Sample answer</th></tr></thead><tbody><tr><td>Primary domain</td><td><code>testbrand.com</code></td></tr><tr><td>CMS subdomain</td><td><code>cms.testbrand.com</code> (default)</td></tr><tr><td>Blog path</td><td><code>/blog</code> (default)</td></tr><tr><td>Site title</td><td><code>Testbrand Insights</code></td></tr><tr><td>Site tagline</td><td><code>Our latest thinking</code></td></tr><tr><td>Brand name</td><td><code>Testbrand</code></td></tr><tr><td>Is WP installed?</td><td>Yes</td></tr><tr><td>WP admin email</td><td><code>admin@testbrand.com</code></td></tr><tr><td>WP password</td><td>(hidden)</td></tr><tr><td>WP app password</td><td>(leave empty first time — generate later)</td></tr><tr><td>DNS provider</td><td>Cloudflare / Netlify DNS / Manual</td></tr><tr><td>API token (if auto DNS)</td><td>(paste it)</td></tr><tr><td>Hostinger NS 1</td><td><code>aurora.dns-parking.com</code></td></tr><tr><td>Hostinger NS 2</td><td><code>nebula.dns-parking.com</code></td></tr><tr><td>Posts JSON path</td><td>(empty to skip)</td></tr><tr><td>Static-site repo path</td><td><code>../testbrand-website</code></td></tr></tbody></table><p>The CLI saves all answers to <code>./client.json</code>. <strong>Add this file to .gitignore</strong> — it contains passwords.</p><h3>Step 3 — What happens during init</h3><pre><code class="lang-">[1/6] Verifying WordPress credentials       ✓
+[2/6] Configuring WordPress                  ✓
+        title → "Testbrand Insights"
+        permalink → /blog/%postname%/
+        home → testbrand.com
+        admin URL → cms.testbrand.com
+[3/6] Installing SEO redirect plugin         (skipped — no app password)
+[4/6] Provisioning DNS                       ✓ (Cloudflare NS records added)
+[5/6] Migrating posts                        (skipped)
+[6/6] Generating Netlify config files        ✓
+        ../testbrand-website/netlify.toml
+        ../testbrand-website/robots.txt
+</code></pre><h3>Step 4 — Generate WP application password</h3><p>In <code>cms.testbrand.com/wp-admin</code> → Users → Profile → scroll to Application Passwords → enter name "claude-migration" → Add. Copy the shown password. Paste it into <code>client.json</code> as <code>wp.app_password</code>.</p><blockquote>🚨 <strong>Gotcha:</strong> if you see "Cookie check failed" when clicking Add, temporarily go to Settings → General and change "Site Address" back to <code>https://cms.testbrand.com</code>, save, generate the app password, then change Site Address back to <code>https://testbrand.com</code>. </blockquote><h3>Step 5 — Run plugin install separately</h3><pre><code class="lang-sh">node bin/cli.js install-plugin
+</code></pre><p>This will:</p><ul><li>Build a <code>.zip</code> with the SEO redirect plugin (rendered from the template with your domain values)</li><li>Upload + activate via the WP REST API</li><li>Purge LiteSpeed cache automatically</li></ul><h3>Step 6 — Commit and push the static site</h3><pre><code class="lang-sh">cd ../testbrand-website
+git add -A
+git commit -m "Add headless WordPress + Netlify proxy config"
+git push
+</code></pre><p>Netlify will deploy in ~30 seconds (no build step needed).</p><h3>Step 7 — Wait for DNS, then verify</h3><p>DNS propagation: 5–30 minutes for the cms subdomain. Watch with:</p><pre><code class="lang-sh">dig cms.testbrand.com +short
+</code></pre><p>When you see an IP returned, run:</p><pre><code class="lang-sh">cd ../headless-wp-onboard
+node bin/cli.js verify
+</code></pre><p>You should see:</p><pre><code class="lang-">✓ Direct cms.testbrand.com blog URL should 301 — 301 → https://testbrand.com/...
+✓ Proxied URL via testbrand.com should 200 — 200 OK
+✓ Page title contains site title
+✓ Canonical URL is on primary domain
+✓ wp-admin still accessible on cms subdomain
+✓ Sitemap reachable on primary domain
+✓ robots.txt on primary domain
+
+📊 7 passed, 0 failed
+</code></pre><p><strong>If any check fails</strong>, see the "Known gotchas" section in <code>PLAYBOOK.md</code>.</p><h3>Step 8 — Migrate existing posts (optional)</h3><p>Build a <code>posts.json</code> file like this:</p><pre><code class="lang-json">[
+  {
+    "slug": "url-friendly-slug",
+    "title": "Article Title",
+    "date": "2026-05-15",
+    "category": "Strategy",
+    "excerpt": "Short summary used as meta description.",
+    "content": "&lt;p&gt;HTML body of the post...&lt;/p&gt;&lt;h2&gt;Subheading&lt;/h2&gt;&lt;p&gt;...&lt;/p&gt;"
+  }
+]
+</code></pre><p>Then:</p><pre><code class="lang-sh">node bin/cli.js migrate --posts posts.json
+</code></pre><p>Each post posts via XML-RPC with a progress bar.</p><h3>Step 9 — Hand it over to the client</h3><ul><li>Tell them the new login URL: <code>cms.testbrand.com/wp-admin</code></li><li>Have them <strong>change the WordPress password</strong> (the one in <code>client.json</code> is in plain text in your repo's gitignored file — treat as compromised)</li><li>Delete <code>client.json</code> or move it to a password manager when done</li><li>The blog at <code>testbrand.com/blog</code> is now live, dynamic, and SEO-clean</li></ul><hr><h2>7. Smoke test checklist (the 7 verify checks explained)</h2><p>Each check is a curl against the live site. The verify command runs them all in ~10 seconds.</p><table><thead><tr><th>#</th><th>Check</th><th>Expected</th><th>Why it matters</th></tr></thead><tbody><tr><td>1</td><td><code>cms.&amp;lt;domain&amp;gt;/blog/X</code> returns 301</td><td>Yes</td><td>Direct visitors must bounce to primary domain, not see the cms host</td></tr><tr><td>2</td><td><code>&amp;lt;domain&amp;gt;/blog/X</code> returns 200</td><td>Yes</td><td>The proxy must serve content under primary domain</td></tr><tr><td>3</td><td><code>&amp;lt;title&amp;gt;</code> contains site title</td><td>"Brand Insights"</td><td>Page titles look professional in search results</td></tr><tr><td>4</td><td><code>&amp;lt;link rel=canonical&amp;gt;</code> points to primary domain</td><td><code>https://&amp;lt;domain&amp;gt;/blog/X/</code></td><td>Google indexes only the primary domain</td></tr><tr><td>5</td><td><code>cms.&amp;lt;domain&amp;gt;/wp-admin</code> is reachable</td><td>302 → login</td><td>You can still log in to edit</td></tr><tr><td>6</td><td><code>&amp;lt;domain&amp;gt;/wp-sitemap.xml</code> returns 200</td><td>Yes</td><td>Search engines can find all posts</td></tr><tr><td>7</td><td><code>&amp;lt;domain&amp;gt;/robots.txt</code> references the sitemap</td><td>Yes</td><td>Search engines find the sitemap via robots.txt</td></tr></tbody></table><p>If <strong>all 7 pass</strong>, the setup is fully working. Hand it to the client.</p><hr><h2>8. Known gotchas (read before debugging)</h2><p>These are bugs we hit during the ecolive.in build. The tool handles them — but if something weird happens, these are your usual suspects.</p><h3>"Cookie check failed" when creating WP application passwords</h3><p>WordPress sets login cookies based on the home URL. If <code>home = primary domain</code> but the admin UI is at <code>cms.subdomain</code>, the cookie domains mismatch and AJAX form submissions fail silently with this notice.</p><p><strong>Fix:</strong> Temporarily set Site Address back to <code>cms.&amp;lt;domain&amp;gt;</code>, generate the app password, then restore. The tool's <code>install-plugin</code> command uses REST API upload (not the AJAX UI) to sidestep this entirely.</p><h3>LiteSpeed Cache serves stale HTML</h3><p>Hostinger ships LiteSpeed Cache enabled by default. Changes to permalinks, site title, or plugin behavior won't appear until cache is purged.</p><p><strong>Fix:</strong> WP admin → LiteSpeed Cache → Toolbox → Purge All. The CLI does this automatically after plugin install, but if you make manual changes in WP admin, purge manually.</p><h3>WordPress canonical redirect breaks proxied <code>/wp-sitemap.xml</code></h3><p>WordPress's <code>redirect_canonical</code> core function redirects any URL accessed via a non-canonical host. When Netlify proxies <code>cms.&amp;lt;domain&amp;gt;/wp-sitemap.xml</code>, WP returns 301 to <code>&amp;lt;domain&amp;gt;/wp-sitemap.xml</code>, which proxies back to cms → infinite loop.</p><p><strong>Fix:</strong> The SEO redirect plugin disables <code>redirect_canonical</code> for <code>/wp-sitemap<em></code> and <code>/feed</em></code> paths. Baked into the template.</p><h3>Netlify edge cache holds stale 301s</h3><p>After fixing a redirect, Netlify edge may still serve the old response for a few minutes.</p><p><strong>Fix:</strong> Verify uses cachebust query params (<code>?_=&amp;lt;timestamp&amp;gt;</code>) on cached paths. For visitors it self-resolves within minutes.</p><h3>Hostinger plugin search returns empty</h3><p>Hostinger's WP plugin search sometimes fails to return results for common plugins.</p><p><strong>Fix:</strong> Upload plugins via the .zip uploader instead. The CLI uses REST API upload, which works around this.</p><h3>Cloudflare "no zone found"</h3><p>The domain must be on Cloudflare AND the API token must have permission for that zone.</p><p><strong>Check:</strong> <code>curl https://api.cloudflare.com/client/v4/zones?name=&amp;lt;domain&amp;gt; -H "Authorization: Bearer &amp;lt;token&amp;gt;"</code> — should return the zone in <code>result</code>.</p><hr><h2>9. What to do if init fails midway</h2><p>The tool is <strong>idempotent</strong> — you can re-run any subcommand without breaking anything.</p><ul><li>WP misconfigured → <code>node bin/cli.js configure-wp</code></li><li>Plugin missing → <code>node bin/cli.js install-plugin</code></li><li>DNS not done → <code>node bin/cli.js dns</code></li><li>Posts didn't migrate → <code>node bin/cli.js migrate --posts posts.json</code></li><li>Files not generated → <code>node bin/cli.js generate-files</code></li><li>Want to check everything → <code>node bin/cli.js verify</code></li></ul><p>Each command reads <code>client.json</code> for config. If something needs to be redone, delete the stale state in WP (or undo the change manually) and re-run.</p><hr><h2>10. Roadmap (future improvements)</h2><p>Suggested next features when we have time:</p><table><thead><tr><th>Priority</th><th>Feature</th><th>Effort</th></tr></thead><tbody><tr><td>High</td><td>Auto-create Netlify site via Netlify API</td><td>2 hrs</td></tr><tr><td>High</td><td><code>migrate-from-html</code> to scrape existing static HTML into <code>posts.json</code></td><td>3 hrs</td></tr><tr><td>Medium</td><td>Build hook setup (WP publish → Netlify rebuild) — optional but helpful for SSG fallback</td><td>2 hrs</td></tr><tr><td>Medium</td><td>Pre-flight check: validate Hostinger reachability before asking for password</td><td>30 min</td></tr><tr><td>Low</td><td>TUI dashboard showing all steps in real time</td><td>4 hrs</td></tr><tr><td>Low</td><td>Hostinger SSH/cPanel scrape to auto-install WP (currently manual)</td><td>8 hrs</td></tr></tbody></table><hr><h2>11. Team contacts</h2><ul><li><strong>Repo:</strong> https://github.com/Meegrowlabs/headless-wp-onboard</li><li><strong>Reference site:</strong> https://ecolive.in (built with this exact stack)</li><li><strong>Documentation:</strong> see <code>PLAYBOOK.md</code> in the repo for the agent-facing version</li></ul><hr><h2>Appendix A — Sample <code>client.json</code> schema</h2><pre><code class="lang-json">{
+  "domain": "yourbrand.com",
+  "cms_domain": "cms.yourbrand.com",
+  "blog_path": "/blog",
+  "site_title": "Yourbrand Insights",
+  "site_tagline": "Our latest thinking",
+  "brand": "Yourbrand",
+  "wp": {
+    "user": "admin@yourbrand.com",
+    "pass": "(actual password)",
+    "app_password": "(application password)"
+  },
+  "dns": {
+    "provider": "cloudflare",
+    "token": "(Cloudflare API token)"
+  },
+  "hostinger_ns": [
+    "aurora.dns-parking.com",
+    "nebula.dns-parking.com"
+  ],
+  "posts_file": "./posts.json",
+  "site_repo_path": "../yourbrand-website"
+}
+</code></pre><p><strong>Always <code>.gitignore</code> this file.</strong> It contains passwords.</p><hr><h2>Appendix B — Architecture cheatsheet for the team</h2><p>When a teammate asks "wait, how does the blog work?" — this is the one-paragraph answer:</p><blockquote>Visitors hit <code>yourbrand.com/blog/post-name</code>. Netlify sees a <code>/blog/*</code> request and reverse-proxies it to <code>cms.yourbrand.com/blog/post-name</code> — WordPress generates the HTML there. The HTML's canonical URL says <code>yourbrand.com</code>, so Google indexes only the primary domain. If anyone visits <code>cms.yourbrand.com/blog/post-name</code> directly, our SEO redirect plugin sends them to the primary domain with a 301. The team writes posts in <code>cms.yourbrand.com/wp-admin</code>. There is no build step — new posts go live instantly via the proxy. </blockquote>
+<div class="footer">Generated 15 May 2026 · Meegrow Labs · headless-wp-onboard v0.1.0</div>
+</body>
+</html>
