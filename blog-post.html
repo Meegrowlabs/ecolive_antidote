@@ -2,7 +2,7 @@
 <html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>How 652 million litres came back to the ground | Ecolive Insights</title>
+<title>How 652 million litres came back to the ground | Ecolive Blog</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
@@ -106,7 +106,7 @@
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="Water_ESG.html">Programs</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="CSR_Community.html">ESG Impact</a>
-      <a class="text-primary border-b-2 border-secondary pb-1" href="blog.html">Insights</a>
+      <a class="text-primary border-b-2 border-secondary pb-1" href="blog.html">Blog</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#about-section">About Us</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#contact-section">Contact</a>
     </div>
@@ -118,7 +118,7 @@
       <a class="text-on-surface-variant hover:text-primary py-2" href="index.html">Home</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="Water_ESG.html">Programs</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="CSR_Community.html">ESG Impact</a>
-      <a class="text-primary py-2" href="blog.html">Insights</a>
+      <a class="text-primary py-2" href="blog.html">Blog</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="index.html#about-section">About Us</a>
       <a class="text-on-surface-variant hover:text-primary py-2" href="index.html#contact-section">Contact</a>
     </div>
@@ -145,7 +145,7 @@
       <p class="font-manrope text-sm leading-relaxed text-primary-fixed/80">Ecolive Ventures Pvt. Ltd. — Wellness of Nature &amp; Nature for Wellness.</p>
     </div>
     <div>
-      <h4 class="font-bold text-secondary-fixed mb-6">Insights</h4>
+      <h4 class="font-bold text-secondary-fixed mb-6">Blog</h4>
       <div class="flex flex-col gap-4 font-manrope text-sm">
         <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="blog.html">All Articles</a>
         <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="blog.html">Water</a>
@@ -203,7 +203,7 @@
 
   function relCard(p) {
     const img = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
-    const cat = (p._embedded?.['wp:term']?.[0] || [{ name: 'Insights' }])[0];
+    const cat = (p._embedded?.['wp:term']?.[0] || [{ name: 'Blog' }])[0];
     return `<article class="group">
       <a href="blog-post.html?slug=${p.slug}" class="block">
         <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container">
@@ -235,7 +235,7 @@
       document.getElementById('post-main').innerHTML = `
         <div class="flex flex-col items-center justify-center py-40 px-6 text-center">
           <h2 class="font-headline text-3xl font-bold mb-4">Article not found.</h2>
-          <a href="blog.html" class="text-secondary font-bold">← Back to Insights</a>
+          <a href="blog.html" class="text-secondary font-bold">← Back to Blog</a>
         </div>`;
       return;
     }
@@ -243,19 +243,19 @@
     const post = posts[0];
     const featImg = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
     const cats = post._embedded?.['wp:term']?.[0] || [];
-    const cat = cats[0] || { name: 'Insights' };
+    const cat = cats[0] || { name: 'Blog' };
     const author = post._embedded?.author?.[0] || { name: 'Ecolive Team', description: '' };
     const avatar = author.avatar_urls?.['96'] || '';
     const relCards = allRel.filter(p => p.id !== post.id).slice(0, 3).map(relCard).join('');
 
-    document.title = `${stripTags(post.title.rendered)} | Ecolive Insights`;
+    document.title = `${stripTags(post.title.rendered)} | Ecolive Blog`;
 
     document.getElementById('post-main').innerHTML = `
       <article>
         <header class="pt-32 md:pt-40 pb-16 px-6">
           <div class="max-w-3xl mx-auto">
             <a href="blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors mb-10">
-              <span class="material-symbols-outlined text-base">arrow_back</span> Back to Insights
+              <span class="material-symbols-outlined text-base">arrow_back</span> Back to Blog
             </a>
             <div class="flex flex-wrap items-center gap-3 mb-8">
               <span class="px-3 py-1 bg-secondary-fixed/40 text-primary text-xs font-bold tracking-widest uppercase rounded-full">${cat.name}</span>
@@ -318,7 +318,7 @@
       <div class="flex flex-col items-center justify-center py-40 px-6 text-center">
         <h2 class="font-headline text-3xl font-bold mb-4">Could not load article.</h2>
         <p class="text-on-surface-variant mb-8">Check your connection or try again later.</p>
-        <a href="blog.html" class="text-secondary font-bold">← Back to Insights</a>
+        <a href="blog.html" class="text-secondary font-bold">← Back to Blog</a>
       </div>`;
   });
 </script>

@@ -1,6 +1,12 @@
+# Robots.txt for Ecolive
+# Allow all crawlers
+
 User-agent: *
 Allow: /
+
+# Disallow WordPress admin areas
 Disallow: /wp-admin/
 Disallow: /wp-login.php
 
+# Sitemap location
 Sitemap: https://ecolive.in/wp-sitemap.xml
