@@ -172,7 +172,7 @@ function relCard(p) {
   const cat = (p._embedded?.['wp:term']?.[0] || [{ name: 'Insights' }])[0];
   return `
   <article class="group">
-    <a href="/blog/${p.slug}" class="block">
+    <a href="/blog/${p.slug}/" class="block">
       <div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-surface-container">
         ${img
           ? `<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="${img}" alt="" loading="lazy"/>`
@@ -210,7 +210,7 @@ function generatePostPage(post, related) {
 <meta property="og:description" content="${excerpt.substring(0, 160)}"/>
 <meta property="og:type" content="article"/>
 ${featImg ? `<meta property="og:image" content="${featImg}"/>` : ''}
-<link rel="canonical" href="https://ecolive.in/blog/${post.slug}"/>
+<link rel="canonical" href="https://ecolive.in/blog/${post.slug}/"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 ${HEAD_STYLES}
 </head>
