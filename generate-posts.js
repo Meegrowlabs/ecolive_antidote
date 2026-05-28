@@ -42,27 +42,27 @@ async function fetchAllPosts() {
 /* ── shared nav / footer / style (keeps parity with rest of site) ── */
 const NAV = `
 <nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(24,28,27,0.04)]">
-  <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
-    <a href="/index.html"><img src="/logo.svg" alt="Ecolive" class="h-8"></a>
-    <div class="hidden md:flex gap-8 items-center font-manrope text-sm font-semibold tracking-tight">
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html">Home</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/Water_ESG.html">Programs</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/CSR_Community.html">ESG Impact</a>
-      <a class="text-primary border-b-2 border-secondary pb-1" href="/blog">Insights</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html#about-section">About Us</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/index.html#contact-section">Contact</a>
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 h-20">
+    <a href="/" class="flex items-center gap-2" aria-label="EcoLive Ventures home"><img src="/assets/ecolive-logo.png" alt="EcoLive" class="h-8"></a>
+    <div class="hidden md:flex gap-7 items-center text-sm font-semibold tracking-tight">
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#challenge">Challenge</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#solutions">Solutions</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#tools">Tools</a>
+      <a class="text-primary border-b-2 border-secondary pb-1" href="/blog">Blogs</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#method">Method</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#contact">Contact</a>
     </div>
-    <button id="mobile-menu-btn" class="md:hidden p-2 text-primary"><span class="material-symbols-outlined text-3xl">menu</span></button>
-    <a href="/index.html#contact-section" class="hidden md:inline-block px-6 py-2.5 btn-primary-gradient text-on-primary rounded-full font-bold transition-all active:scale-95">Get Started</a>
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-primary" aria-label="Open menu"><span class="material-symbols-outlined text-3xl">menu</span></button>
+    <a href="/#contact" class="hidden md:inline-block px-6 py-2.5 btn-primary-gradient text-on-primary rounded-full font-bold transition-all active:scale-95">Get Started</a>
   </div>
   <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-surface/95 backdrop-blur-xl shadow-xl">
-    <div class="flex flex-col px-8 py-6 gap-4 font-manrope text-sm font-semibold">
-      <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html">Home</a>
-      <a class="text-on-surface-variant hover:text-primary py-2" href="/Water_ESG.html">Programs</a>
-      <a class="text-on-surface-variant hover:text-primary py-2" href="/CSR_Community.html">ESG Impact</a>
-      <a class="text-primary py-2" href="/blog">Insights</a>
-      <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html#about-section">About Us</a>
-      <a class="text-on-surface-variant hover:text-primary py-2" href="/index.html#contact-section">Contact</a>
+    <div class="flex flex-col px-8 py-6 gap-4 text-sm font-semibold">
+      <a class="text-on-surface-variant hover:text-primary py-2" href="/#challenge">Challenge</a>
+      <a class="text-on-surface-variant hover:text-primary py-2" href="/#solutions">Solutions</a>
+      <a class="text-on-surface-variant hover:text-primary py-2" href="/#tools">Tools</a>
+      <a class="text-primary py-2" href="/blog">Blogs</a>
+      <a class="text-on-surface-variant hover:text-primary py-2" href="/#method">Method</a>
+      <a class="text-on-surface-variant hover:text-primary py-2" href="/#contact">Contact</a>
     </div>
   </div>
 </nav>`;
@@ -71,11 +71,11 @@ const FOOTER = `
 <footer class="w-full rounded-t-[3rem] mt-20 bg-primary text-on-primary">
   <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
     <div>
-      <a href="/index.html" class="mb-6 block"><img src="/logo.svg" alt="Ecolive" class="h-7 brightness-0 invert"></a>
-      <p class="font-manrope text-sm leading-relaxed text-primary-fixed/80">Ecolive Ventures Pvt. Ltd. — Wellness of Nature &amp; Nature for Wellness.</p>
+      <a href="/" class="mb-6 block"><img src="/assets/ecolive-logo.png" alt="EcoLive" class="h-7 brightness-0 invert"></a>
+      <p class="font-manrope text-sm leading-relaxed text-primary-fixed/80">EcoLive Ventures Pvt. Ltd. — Wellness of Nature &amp; Nature for Wellness.</p>
     </div>
     <div>
-      <h4 class="font-bold text-secondary-fixed mb-6">Insights</h4>
+      <h4 class="font-bold text-secondary-fixed mb-6">Blogs</h4>
       <div class="flex flex-col gap-4 font-manrope text-sm">
         <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/blog">All Articles</a>
       </div>
@@ -83,8 +83,8 @@ const FOOTER = `
     <div>
       <h4 class="font-bold text-secondary-fixed mb-6">Company</h4>
       <div class="flex flex-col gap-4 font-manrope text-sm">
-        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/index.html#about-section">About</a>
-        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/index.html#contact-section">Contact</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/#method">Method</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed" href="/#contact">Contact</a>
       </div>
     </div>
     <div>
@@ -111,16 +111,16 @@ const HEAD_STYLES = `
     theme: {
       extend: {
         colors: {
-          "primary":"#00261b","on-primary":"#ffffff","primary-container":"#0b3d2e",
-          "primary-fixed":"#97fa85","on-primary-fixed":"#00261b","primary-fixed-dim":"#7be770",
-          "secondary":"#006e09","on-secondary":"#ffffff","secondary-container":"#97fa85",
-          "secondary-fixed":"#97fa85","on-secondary-fixed":"#00261b","secondary-fixed-dim":"#7be770",
-          "tertiary":"#286655","on-tertiary":"#ffffff",
-          "surface":"#f7faf8","surface-dim":"#dadddb","surface-variant":"#e0e3e1",
-          "surface-container-lowest":"#ffffff","surface-container-low":"#f1f4f2",
-          "surface-container":"#ebeeec","surface-container-high":"#e6e9e7",
-          "on-surface":"#181c1b","on-surface-variant":"#3f4844",
-          "outline":"#6f7975","outline-variant":"#c0c8c3",
+          "primary":"#045e80","on-primary":"#ffffff","primary-container":"#034d6b",
+          "primary-fixed":"#c9e8f5","on-primary-fixed":"#04384d","primary-fixed-dim":"#8fcfe6",
+          "secondary":"#2f7a39","on-secondary":"#ffffff","secondary-container":"#d3efd6",
+          "secondary-fixed":"#b8e6bd","on-secondary-fixed":"#103a16","secondary-fixed-dim":"#8fd199",
+          "tertiary":"#0077a8","on-tertiary":"#ffffff",
+          "surface":"#f4f9f8","surface-dim":"#dde6e4","surface-variant":"#e3edeb",
+          "surface-container-lowest":"#ffffff","surface-container-low":"#eef5f4",
+          "surface-container":"#e8f1ef","surface-container-high":"#e2ece9",
+          "on-surface":"#14212b","on-surface-variant":"#5b6872",
+          "outline":"#7a8a92","outline-variant":"#c2d2d6",
         },
         fontFamily:{"headline":["Manrope","sans-serif"],"body":["Manrope","sans-serif"]},
         borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},
@@ -130,7 +130,7 @@ const HEAD_STYLES = `
 <\/script>
 <style>
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
-  .btn-primary-gradient{background:linear-gradient(135deg,#00261b 0%,#0b3d2e 100%)}
+  .btn-primary-gradient{background:linear-gradient(135deg,#045e80 0%,#0077a8 100%)}
   .ghost-border{border:1px solid rgba(192,200,195,0.2)}
   body{font-family:'Manrope',sans-serif;letter-spacing:-0.01em}
   h1,h2,h3,h4{letter-spacing:-0.02em}
@@ -139,15 +139,15 @@ const HEAD_STYLES = `
   .article-body h2{font-size:2.25rem;font-weight:800;margin-top:4rem;margin-bottom:1.5rem;line-height:1.15;letter-spacing:-0.02em}
   .article-body h3{font-size:1.625rem;font-weight:700;margin-top:3rem;margin-bottom:1rem;letter-spacing:-0.02em}
   .article-body p{color:#3f4844}
-  .article-body a{color:#006e09;text-decoration:underline;text-decoration-color:rgba(0,110,9,.3);text-underline-offset:4px}
+  .article-body a{color:#045e80;text-decoration:underline;text-decoration-color:rgba(4,94,128,.3);text-underline-offset:4px}
   .article-body strong{color:#181c1b;font-weight:700}
-  .article-body blockquote{font-size:1.5rem;line-height:1.5;font-weight:600;color:#00261b;padding:2rem 2.5rem;background:#f1f4f2;border-radius:1rem;font-style:italic}
+  .article-body blockquote{font-size:1.5rem;line-height:1.5;font-weight:600;color:#045e80;padding:2rem 2.5rem;background:#eef5f4;border-radius:1rem;font-style:italic}
   .article-body ul,.article-body ol{padding-left:1.5rem;color:#3f4844}
   .article-body ul li{list-style:disc;margin-bottom:.5rem}
   .article-body ol li{list-style:decimal;margin-bottom:.5rem}
   .article-body img,.article-body figure{border-radius:1rem;overflow:hidden;max-width:100%}
   .article-body hr{border:0;height:1px;background:linear-gradient(to right,transparent,#c0c8c3,transparent);margin:3rem 0}
-  .drop-cap>p:first-child::first-letter{font-size:4.5rem;font-weight:800;float:left;line-height:.85;padding:.4rem .75rem 0 0;color:#00261b}
+  .drop-cap>p:first-child::first-letter{font-size:4.5rem;font-weight:800;float:left;line-height:.85;padding:.4rem .75rem 0 0;color:#045e80}
 </style>`;
 
 const PAGE_SCRIPT = `
@@ -202,9 +202,16 @@ function generatePostPage(post, related) {
   return `<!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58F3DZWZ');<\/script>
+<!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>${title} | Ecolive Insights</title>
+<title>${title} | EcoLive Blog</title>
 <meta name="description" content="${excerpt.substring(0, 160)}"/>
 <meta property="og:title" content="${title}"/>
 <meta property="og:description" content="${excerpt.substring(0, 160)}"/>
@@ -215,6 +222,9 @@ ${featImg ? `<meta property="og:image" content="${featImg}"/>` : ''}
 ${HEAD_STYLES}
 </head>
 <body class="bg-surface text-on-surface font-body overflow-x-hidden">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58F3DZWZ" height="0" width="0" style="display:none;visibility:hidden"><\/iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 ${NAV}
 
@@ -227,7 +237,7 @@ ${NAV}
     <header class="pt-32 md:pt-40 pb-16 px-6">
       <div class="max-w-3xl mx-auto">
         <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors mb-10">
-          <span class="material-symbols-outlined text-base">arrow_back</span> Back to Insights
+          <span class="material-symbols-outlined text-base">arrow_back</span> Back to Blog
         </a>
         <div class="flex flex-wrap items-center gap-3 mb-8">
           <span class="px-3 py-1 bg-secondary-fixed/40 text-primary text-xs font-bold tracking-widest uppercase rounded-full">${cat.name}</span>

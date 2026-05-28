@@ -1,0 +1,92 @@
+{
+  "sources": [
+    {
+      "label": "CPHEEO / MoHUA water supply manual",
+      "note": "Common Indian urban planning benchmark: 135 LPCD for cities/towns with piped water supply and sewerage contemplated; 150 LPCD often used for larger cities.",
+      "url": "https://mohua.gov.in/publication/manual-on-water-supply-and-treatment-systems-cpheeo-1999.php"
+    },
+    {
+      "label": "IMD climate normals and city climate reports",
+      "note": "Used for normal/average annual rainfall where available. Values should be verified for project design against latest local IMD station data.",
+      "url": "https://mausam.imd.gov.in/"
+    },
+    {
+      "label": "Municipal / district / CGWB public documents",
+      "note": "Used for indicative municipal/city area. Administrative boundary definitions vary; project tools must confirm the exact site boundary.",
+      "url": "https://cgwb.gov.in/"
+    }
+  ],
+  "cities": {
+    "gurugram": {
+      "name": "Gurugram",
+      "state": "Haryana",
+      "annualRainfallMm": 505,
+      "cityAreaSqKm": 232,
+      "population": 876824,
+      "lpcd": 135,
+      "sourceNote": "Rainfall: Gurugram SFD Lite / Census DCHB reference; area: Municipal Corporation Gurugram boundary commonly cited around 232 sq km; demand: CPHEEO 135 LPCD benchmark."
+    },
+    "jaipur": {
+      "name": "Jaipur",
+      "state": "Rajasthan",
+      "annualRainfallMm": 633,
+      "cityAreaSqKm": 468,
+      "population": 3046163,
+      "lpcd": 150,
+      "sourceNote": "Rainfall: IMD Jaipur climate report; area: CGWB Jaipur city/agglomeration references around 467.57 sq km; demand: CPHEEO larger-city benchmark."
+    },
+    "delhi": {
+      "name": "Delhi",
+      "state": "NCT Delhi",
+      "annualRainfallMm": 762,
+      "cityAreaSqKm": 1483,
+      "population": 16787941,
+      "lpcd": 150,
+      "sourceNote": "Rainfall: IMD Safdarjung climate normal; area: NCT Delhi administrative area; demand: CPHEEO larger-city benchmark."
+    },
+    "mumbai": {
+      "name": "Mumbai",
+      "state": "Maharashtra",
+      "annualRainfallMm": 2547,
+      "cityAreaSqKm": 603,
+      "population": 12442373,
+      "lpcd": 150,
+      "sourceNote": "Rainfall: BMC/IMD annual average references; area: Greater Mumbai municipal area; demand: CPHEEO larger-city benchmark."
+    },
+    "bengaluru": {
+      "name": "Bengaluru",
+      "state": "Karnataka",
+      "annualRainfallMm": 970,
+      "cityAreaSqKm": 741,
+      "population": 8443675,
+      "lpcd": 150,
+      "sourceNote": "Indicative city baseline for tool prototyping; verify rainfall, BBMP area and population before project use."
+    },
+    "pune": {
+      "name": "Pune",
+      "state": "Maharashtra",
+      "annualRainfallMm": 722,
+      "cityAreaSqKm": 516,
+      "population": 3124458,
+      "lpcd": 150,
+      "sourceNote": "Indicative city baseline for tool prototyping; verify rainfall, municipal area and population before project use."
+    }
+  },
+  "siteAreaPresetsSqm": {
+    "home": 180,
+    "rwa": 10000,
+    "school": 8000,
+    "hotel": 5000,
+    "small-factory": 2500,
+    "medium-factory": 10000,
+    "large-factory": 50000,
+    "warehouse": 20000
+  },
+  "surfaceCoefficients": {
+    "metal": 0.95,
+    "concrete": 0.85,
+    "road": 0.7,
+    "soil": 0.2,
+    "green": 0.1
+  }
+}
