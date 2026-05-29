@@ -4,63 +4,46 @@
  *
  * @package ecolive-organic
  */
-get_header(); ?>
-
-<section class="eco-blog-hero">
-	<div class="eco-blog-hero__inner">
-		<div>
-			<span class="eco-eyebrow"><?php
-				if ( is_category() )       { esc_html_e( 'Topic', 'ecolive-organic' ); }
-				elseif ( is_tag() )        { esc_html_e( 'Tag', 'ecolive-organic' ); }
-				elseif ( is_author() )     { esc_html_e( 'Author', 'ecolive-organic' ); }
-				elseif ( is_date() )       { esc_html_e( 'Archive', 'ecolive-organic' ); }
-				else                       { esc_html_e( 'Insights', 'ecolive-organic' ); }
-			?></span>
-			<h1>
-				<?php the_archive_title(); ?>
-			</h1>
-		</div>
-		<?php if ( $desc = get_the_archive_description() ) : ?>
-		<div style="font-size:1.125rem; color: var(--on-surface-variant); line-height:1.7;">
-			<?php echo wp_kses_post( $desc ); ?>
-		</div>
-		<?php endif; ?>
-	</div>
+get_header();
+?>
+<main>
+<section class="relative pt-40 pb-12 md:pt-52 md:pb-16 px-6 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary-fixed/30 via-surface to-surface"></div>
+  <div class="max-w-7xl mx-auto">
+    <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-4">
+      <?php
+      if ( is_category() ) { esc_html_e( 'Topic', 'ecolive-organic' ); }
+      elseif ( is_tag() ) { esc_html_e( 'Tag', 'ecolive-organic' ); }
+      elseif ( is_author() ) { esc_html_e( 'Author', 'ecolive-organic' ); }
+      elseif ( is_date() ) { esc_html_e( 'Archive', 'ecolive-organic' ); }
+      else { esc_html_e( 'Blog', 'ecolive-organic' ); }
+      ?>
+    </p>
+    <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter"><?php the_archive_title(); ?></h1>
+    <?php if ( $desc = get_the_archive_description() ) : ?>
+      <div class="text-lg text-on-surface-variant max-w-2xl mt-6"><?php echo wp_kses_post( $desc ); ?></div>
+    <?php endif; ?>
+  </div>
 </section>
 
-<?php if ( have_posts() ) : ?>
-<section class="eco-grid" style="padding-top: 2rem;">
-	<?php while ( have_posts() ) : the_post(); ?>
-		<article class="eco-card" id="post-<?php the_ID(); ?>">
-			<a href="<?php the_permalink(); ?>">
-				<div class="eco-card__media">
-					<?php if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'ecolive-card', array( 'alt' => get_the_title() ) );
-					} ?>
-				</div>
-				<div class="eco-card__meta">
-					<span class="eco-cat"><?php echo ecolive_organic_primary_category(); ?></span>
-					<span><?php echo esc_html( ecolive_organic_reading_time() ); ?></span>
-				</div>
-				<h3 class="eco-card__title"><?php the_title(); ?></h3>
-				<p class="eco-card__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
-				<div class="eco-card__byline">
-					<div class="eco-avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 32 ); ?></div>
-					<div><strong><?php the_author(); ?></strong> · <?php echo esc_html( get_the_date() ); ?></div>
-				</div>
-			</a>
-		</article>
-	<?php endwhile; ?>
+<section class="px-6 pb-24">
+  <div class="max-w-7xl mx-auto">
+    <?php if ( have_posts() ) : ?>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+      <?php while ( have_posts() ) : the_post(); ?>
+        <?php get_template_part( 'template-parts/post-card' ); ?>
+      <?php endwhile; ?>
+    </div>
+    <?php ecolive_organic_pagination(); ?>
+    <?php else : ?>
+    <div class="py-16 text-center">
+      <h2 class="font-headline text-3xl font-bold mb-4"><?php esc_html_e( 'Nothing matches.', 'ecolive-organic' ); ?></h2>
+      <p class="text-on-surface-variant mb-8"><?php esc_html_e( 'Try a different topic or come back soon.', 'ecolive-organic' ); ?></p>
+      <div class="max-w-md mx-auto"><?php get_search_form(); ?></div>
+    </div>
+    <?php endif; ?>
+  </div>
 </section>
-
-<?php ecolive_organic_pagination(); ?>
-
-<?php else : ?>
-<section class="eco-container" style="padding: 6rem 1.5rem; text-align:center;">
-	<h2><?php esc_html_e( 'Nothing matches.', 'ecolive-organic' ); ?></h2>
-	<p style="color: var(--on-surface-variant); margin-top: 1rem;"><?php esc_html_e( 'Try a different topic or come back soon.', 'ecolive-organic' ); ?></p>
-	<?php get_search_form(); ?>
-</section>
-<?php endif; ?>
-
-<?php get_footer(); ?>
+</main>
+<?php
+get_footer();

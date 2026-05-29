@@ -36,7 +36,7 @@ if ( post_password_required() ) { return; }
 
 	<?php
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-		echo '<p style="color:var(--on-surface-variant); margin-top:2rem;">' . esc_html__( 'Comments are closed.', 'ecolive-organic' ) . '</p>';
+		echo '<p style="color:#5b6872; margin-top:2rem;">' . esc_html__( 'Comments are closed.', 'ecolive-organic' ) . '</p>';
 	endif;
 
 	comment_form( array(

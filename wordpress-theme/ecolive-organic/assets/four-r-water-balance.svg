@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">EcoLive 4R water optimization system</title>
+  <desc id="desc">A refined water-themed visual for EcoLive showing Reduce, Reuse, Recharge and Recycle as part of one connected water optimization system.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#effbff"/>
+      <stop offset=".52" stop-color="#fbfeff"/>
+      <stop offset="1" stop-color="#e8f7f4"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#7ee8ff"/>
+      <stop offset=".45" stop-color="#10ace8"/>
+      <stop offset="1" stop-color="#006fa9"/>
+    </linearGradient>
+    <linearGradient id="stream" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0077a8"/>
+      <stop offset=".52" stop-color="#10ace8"/>
+      <stop offset="1" stop-color="#4f9d55"/>
+    </linearGradient>
+    <filter id="float" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#163947" flood-opacity=".16"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#163947" flood-opacity=".10"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#page)"/>
+
+  <g opacity=".55">
+    <path d="M45 675 C195 612 302 744 454 680 C609 616 720 621 866 694 C986 754 1070 717 1160 662 L1160 900 L45 900 Z" fill="#c7edf6"/>
+    <path d="M45 748 C220 690 330 802 505 738 C642 688 758 708 900 770 C1010 818 1082 790 1160 735 L1160 900 L45 900 Z" fill="#95d8ea"/>
+  </g>
+
+  <g filter="url(#float)">
+    <rect x="148" y="128" width="904" height="596" rx="38" fill="#ffffff" opacity=".9"/>
+    <rect x="178" y="158" width="844" height="536" rx="28" fill="#f7fdff" stroke="#d7e8ee"/>
+  </g>
+
+  <g transform="translate(600 430)">
+    <circle r="204" fill="#e8f8fc"/>
+    <circle r="150" fill="#ffffff" filter="url(#soft)"/>
+    <path d="M0 -170 C74 -68 129 5 129 83 C129 158 72 220 0 220 C-72 220 -129 158 -129 83 C-129 5 -74 -68 0 -170 Z" fill="url(#water)"/>
+    <path d="M-60 82 C-22 122 34 122 72 82" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" opacity=".84"/>
+    <path d="M-39 24 C-13 -16 23 -46 56 -65" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".62"/>
+    <text y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="850" fill="#043c58">4R Water Optimization</text>
+  </g>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M290 430 C370 250 515 230 600 260" stroke="#d3e8ee" stroke-width="26"/>
+    <path d="M910 430 C830 250 685 230 600 260" stroke="#d3e8ee" stroke-width="26"/>
+    <path d="M290 430 C370 610 515 630 600 600" stroke="#d3e8ee" stroke-width="26"/>
+    <path d="M910 430 C830 610 685 630 600 600" stroke="#d3e8ee" stroke-width="26"/>
+    <path d="M290 430 C370 250 515 230 600 260" stroke="url(#stream)" stroke-width="12"/>
+    <path d="M910 430 C830 250 685 230 600 260" stroke="url(#stream)" stroke-width="12"/>
+    <path d="M290 430 C370 610 515 630 600 600" stroke="url(#stream)" stroke-width="12"/>
+    <path d="M910 430 C830 610 685 630 600 600" stroke="url(#stream)" stroke-width="12"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif" filter="url(#soft)">
+    <g transform="translate(128 318)">
+      <rect width="268" height="118" rx="59" fill="#fff" stroke="#d7e6eb"/>
+      <circle cx="60" cy="59" r="34" fill="#e8f8fc"/>
+      <path d="M47 59h26M60 46v26" stroke="#0077a8" stroke-width="7" stroke-linecap="round"/>
+      <text x="112" y="52" font-size="30" font-weight="850" fill="#14212b">Reduce</text>
+      <text x="112" y="82" font-size="17" fill="#5b6872">less demand</text>
+    </g>
+    <g transform="translate(804 318)">
+      <rect width="268" height="118" rx="59" fill="#fff" stroke="#d7e6eb"/>
+      <circle cx="60" cy="59" r="34" fill="#e8f8fc"/>
+      <path d="M47 62 C54 44 74 44 81 62 M81 62h-17" fill="none" stroke="#0077a8" stroke-width="7" stroke-linecap="round"/>
+      <text x="112" y="52" font-size="30" font-weight="850" fill="#14212b">Reuse</text>
+      <text x="112" y="82" font-size="17" fill="#5b6872">use again</text>
+    </g>
+    <g transform="translate(128 552)">
+      <rect width="268" height="118" rx="59" fill="#fff" stroke="#d7e6eb"/>
+      <circle cx="60" cy="59" r="34" fill="#e8f8fc"/>
+      <path d="M60 41v38M45 64l15 15 15-15" fill="none" stroke="#0077a8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="112" y="52" font-size="30" font-weight="850" fill="#14212b">Recharge</text>
+      <text x="112" y="82" font-size="17" fill="#5b6872">rain to ground</text>
+    </g>
+    <g transform="translate(804 552)">
+      <rect width="268" height="118" rx="59" fill="#fff" stroke="#d7e6eb"/>
+      <circle cx="60" cy="59" r="34" fill="#e8f8fc"/>
+      <path d="M43 59 C51 38 78 38 86 59 M86 59 C78 80 51 80 43 59" fill="none" stroke="#0077a8" stroke-width="7" stroke-linecap="round"/>
+      <text x="112" y="52" font-size="30" font-weight="850" fill="#14212b">Recycle</text>
+      <text x="112" y="82" font-size="17" fill="#5b6872">circular use</text>
+    </g>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="92" font-size="44" font-weight="900" fill="#045e80">Water, Managed as a System</text>
+    <text x="600" y="132" font-size="20" fill="#5b6872">Reduce • Reuse • Recharge • Recycle</text>
+  </g>
+</svg>

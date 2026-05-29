@@ -1,43 +1,45 @@
 <?php
 /**
- * Static page template — uses the same editorial body styles.
+ * Static page template — editorial body styles.
  *
  * @package ecolive-organic
  */
-get_header(); ?>
+get_header();
 
-<?php while ( have_posts() ) : the_post(); ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="eco-single__header">
-		<div class="eco-prose">
-			<h1 class="eco-single__title"><?php the_title(); ?></h1>
-		</div>
-	</header>
+while ( have_posts() ) : the_post();
+?>
+<main>
+<article>
+  <header class="pt-32 md:pt-44 pb-10 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.05]"><?php the_title(); ?></h1>
+    </div>
+  </header>
 
-	<?php if ( has_post_thumbnail() ) : ?>
-	<figure class="eco-single__hero">
-		<div class="eco-single__hero-img"><?php the_post_thumbnail( 'ecolive-hero', array( 'alt' => get_the_title() ) ); ?></div>
-	</figure>
-	<?php endif; ?>
+  <?php if ( has_post_thumbnail() ) : ?>
+  <figure class="px-6 mb-16">
+    <div class="max-w-6xl mx-auto aspect-[21/9] rounded-xl overflow-hidden">
+      <?php the_post_thumbnail( 'ecolive-hero', array( 'class' => 'w-full h-full object-cover' ) ); ?>
+    </div>
+  </figure>
+  <?php endif; ?>
 
-	<div class="eco-article-body">
-		<?php the_content(); ?>
-		<?php
-		wp_link_pages( array(
-			'before' => '<div class="post-page-links" style="margin-top:2rem;">' . esc_html__( 'Pages:', 'ecolive-organic' ),
-			'after'  => '</div>',
-		) );
-		?>
-	</div>
+  <div class="px-6 pb-24">
+    <div class="max-w-3xl mx-auto article-body">
+      <?php the_content(); ?>
+      <?php wp_link_pages( array( 'before' => '<div class="post-page-links mt-8 font-bold">' . esc_html__( 'Pages:', 'ecolive-organic' ) . ' ', 'after' => '</div>' ) ); ?>
+    </div>
 
-	<?php
-	if ( comments_open() || get_comments_number() ) :
-		echo '<div class="eco-comments">';
-		comments_template();
-		echo '</div>';
-	endif;
-	?>
+    <?php
+    if ( comments_open() || get_comments_number() ) {
+      echo '<div class="eco-comments max-w-3xl mx-auto mt-12">';
+      comments_template();
+      echo '</div>';
+    }
+    ?>
+  </div>
 </article>
-<?php endwhile; ?>
-
-<?php get_footer(); ?>
+</main>
+<?php
+endwhile;
+get_footer();

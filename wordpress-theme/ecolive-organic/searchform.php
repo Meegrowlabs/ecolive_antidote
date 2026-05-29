@@ -1,22 +1,16 @@
 <?php
 /**
- * Search form — pill-shaped, ghost border, focus-state on the secondary green.
+ * Search form — pill-shaped.
  *
  * @package ecolive-organic
  */
 ?>
-<form role="search" method="get" class="eco-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="display:flex;gap:0.5rem;max-width:480px;margin-inline:auto;">
-	<label class="eco-sr-only" for="eco-search-input"><?php esc_html_e( 'Search for:', 'ecolive-organic' ); ?></label>
-	<input
-		id="eco-search-input"
-		type="search"
-		class="eco-search-form__input"
-		name="s"
-		value="<?php echo esc_attr( get_search_query() ); ?>"
-		placeholder="<?php esc_attr_e( 'Search insights…', 'ecolive-organic' ); ?>"
-		style="flex:1;padding:0.875rem 1.5rem;border-radius:9999px;background:var(--surface-container-low);border:1px solid rgba(192, 200, 195, 0.2);font-family:inherit;font-size:1rem;color:var(--on-surface);"
-	/>
-	<button type="submit" class="eco-btn-primary" style="padding:0.75rem 1.25rem;">
-		<span class="material-symbols-outlined" aria-hidden="true">search</span>
-	</button>
+<form role="search" method="get" class="flex gap-2 w-full" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+  <label class="screen-reader-text" for="eco-search-input"><?php esc_html_e( 'Search for:', 'ecolive-organic' ); ?></label>
+  <input id="eco-search-input" type="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>"
+    placeholder="<?php esc_attr_e( 'Search the blog…', 'ecolive-organic' ); ?>"
+    class="flex-1 px-6 py-3.5 rounded-full bg-surface-container-low border border-outline-variant/30 focus:border-secondary focus:ring-0 text-on-surface" />
+  <button type="submit" class="px-5 py-3.5 btn-primary-gradient text-on-primary rounded-full font-bold inline-flex items-center" aria-label="<?php esc_attr_e( 'Search', 'ecolive-organic' ); ?>">
+    <span class="material-symbols-outlined">search</span>
+  </button>
 </form>

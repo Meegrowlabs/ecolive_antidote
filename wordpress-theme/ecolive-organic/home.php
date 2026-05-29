@@ -1,6 +1,6 @@
 <?php
 /**
- * Fallback index — blog listing.
+ * Blog posts page (Settings → Reading → Posts page).
  *
  * @package ecolive-organic
  */

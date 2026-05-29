@@ -1,63 +1,56 @@
 <?php
 /**
- * Site footer — Deep Forest panel with widget area.
+ * Site footer — deep panel matching the EcoLive marketing design.
  *
  * @package ecolive-organic
  */
+$eco_blog_url = ecolive_blog_url();
 ?>
-</main><!-- #site-content -->
+</div><!-- #site-content -->
 
-<footer class="eco-site-footer">
-	<div class="eco-site-footer__grid">
-		<div>
-			<a class="eco-site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-			</a>
-			<p style="margin-top: 1.5rem; color: rgba(151, 250, 133, 0.8); font-size: 0.875rem; line-height: 1.6;">
-				<?php echo esc_html( get_bloginfo( 'description' ) ); ?>
-			</p>
-		</div>
-
-		<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-			<?php dynamic_sidebar( 'footer-1' ); ?>
-		<?php else : ?>
-			<div>
-				<h4><?php esc_html_e( 'Insights', 'ecolive-organic' ); ?></h4>
-				<?php
-				wp_list_categories( array(
-					'title_li' => '',
-					'number'   => 5,
-				) );
-				?>
-			</div>
-			<div>
-				<h4><?php esc_html_e( 'Browse', 'ecolive-organic' ); ?></h4>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'footer',
-					'container'      => false,
-					'items_wrap'     => '%3$s',
-					'depth'          => 1,
-					'fallback_cb'    => '__return_empty_string',
-				) );
-				?>
-			</div>
-			<div>
-				<h4><?php esc_html_e( 'Newsletter', 'ecolive-organic' ); ?></h4>
-				<p style="font-size: 0.875rem; color: rgba(151, 250, 133, 0.7); margin-bottom: 1rem;"><?php esc_html_e( 'A monthly note from the field.', 'ecolive-organic' ); ?></p>
-				<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" style="display:flex;">
-					<label class="eco-sr-only" for="eco-footer-email"><?php esc_html_e( 'Email address', 'ecolive-organic' ); ?></label>
-					<input id="eco-footer-email" type="email" name="email" placeholder="<?php esc_attr_e( 'Email address', 'ecolive-organic' ); ?>" style="flex:1;border:0;background: var(--primary-container);color:var(--on-primary);padding:0.6rem 1rem;border-radius:9999px 0 0 9999px;" />
-					<button type="submit" style="background:var(--secondary);color:var(--on-secondary);border:0;padding:0.6rem 1rem;border-radius:0 9999px 9999px 0;font-weight:700;">→</button>
-				</form>
-			</div>
-		<?php endif; ?>
-	</div>
-
-	<div class="eco-site-footer__bottom">
-		<span>&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'ecolive-organic' ); ?></span>
-		<span><?php esc_html_e( 'Powered by Ecolive', 'ecolive-organic' ); ?></span>
-	</div>
+<footer class="w-full rounded-t-[3rem] mt-20 bg-primary text-on-primary">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
+    <div class="col-span-1">
+      <a class="mb-6 block" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/ecolive-logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-7 brightness-0 invert">
+      </a>
+      <p class="text-sm leading-relaxed text-primary-fixed/80 mb-8">Conserve, reuse, recharge and govern water by every practical means.</p>
+      <div class="flex gap-4">
+        <span class="material-symbols-outlined text-primary-fixed/70">public</span>
+        <span class="material-symbols-outlined text-primary-fixed/70">eco</span>
+        <span class="material-symbols-outlined text-primary-fixed/70">water</span>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold text-secondary-fixed mb-6">Solutions</h4>
+      <div class="flex flex-col gap-4 text-sm">
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#solutions' ) ); ?>">4R framework</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#tools' ) ); ?>">WaterWise tools</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#method' ) ); ?>">Water audits</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#challenge' ) ); ?>">Compliance gaps</a>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold text-secondary-fixed mb-6">Company</h4>
+      <div class="flex flex-col gap-4 text-sm">
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( $eco_blog_url ); ?>">Blogs</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#method' ) ); ?>">Method</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold text-secondary-fixed mb-6">Contact</h4>
+      <div class="flex flex-col gap-4 text-sm">
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="mailto:connect@ecolive.in">connect@ecolive.in</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="tel:+919871472211">+91 98714 72211</a>
+        <a class="text-primary-fixed/70 hover:text-secondary-fixed transition-all" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Gurugram and Jaipur offices</a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-primary-container/50 rounded-t-3xl">
+    <p class="text-sm leading-relaxed text-primary-fixed/70">&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
+    <span class="text-xs text-primary-fixed/60">Wellness of Nature &amp; Nature for Wellness</span>
+  </div>
 </footer>
 
 <?php wp_footer(); ?>

@@ -1,28 +1,22 @@
 <?php
 /**
- * 404 — Editorial empty state.
+ * 404 — empty state.
  *
  * @package ecolive-organic
  */
-get_header(); ?>
-
-<section class="eco-blog-hero" style="padding-bottom:4rem;">
-	<div class="eco-blog-hero__inner">
-		<div>
-			<span class="eco-eyebrow"><?php esc_html_e( '404', 'ecolive-organic' ); ?></span>
-			<h1><?php esc_html_e( 'This page', 'ecolive-organic' ); ?> <span class="eco-text-gradient"><?php esc_html_e( 'wandered off.', 'ecolive-organic' ); ?></span></h1>
-		</div>
-		<p style="font-size:1.125rem; line-height:1.7; color: var(--on-surface-variant);">
-			<?php esc_html_e( "The link is broken, or the page has moved. Try a search, or head back to the latest writing.", 'ecolive-organic' ); ?>
-		</p>
-	</div>
+get_header();
+?>
+<main>
+<section class="relative pt-44 pb-16 md:pt-56 px-6 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-secondary-fixed/30 via-surface to-surface"></div>
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-secondary font-bold text-sm uppercase tracking-widest mb-4">404</p>
+    <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">This page <span class="text-gradient">wandered off.</span></h1>
+    <p class="text-lg text-on-surface-variant mb-10">The link is broken, or the page has moved. Try a search, or head back home.</p>
+    <div class="max-w-md mx-auto mb-8"><?php get_search_form(); ?></div>
+    <a class="inline-block px-8 py-4 btn-primary-gradient text-on-primary rounded-full font-bold" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to home', 'ecolive-organic' ); ?></a>
+  </div>
 </section>
-
-<section class="eco-container" style="padding: 0 1.5rem 6rem; max-width: 720px;">
-	<?php get_search_form(); ?>
-	<div style="margin-top: 3rem; text-align:center;">
-		<a class="eco-btn-primary" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to home', 'ecolive-organic' ); ?></a>
-	</div>
-</section>
-
-<?php get_footer(); ?>
+</main>
+<?php
+get_footer();
